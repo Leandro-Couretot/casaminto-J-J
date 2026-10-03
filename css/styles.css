@@ -1,0 +1,238 @@
+/* ---------- Paleta y tipografías ---------- */
+:root {
+  --bordo: #74252a;
+  --crema: #e8dfd8;
+  --malva: #8e5d64;
+  --todo: #e3000f;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #3a1216;
+  font-family: var(--sans);
+  color: var(--bordo);
+  -webkit-font-smoothing: antialiased;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Columna de la invitación ----------
+   El diseño original mide 1080 px de ancho. --u equivale a 1 px de ese
+   diseño, escalado al ancho real de la columna (máx. 480 px). */
+.invitation {
+  max-width: 480px;
+  margin: 0 auto;
+  container-type: inline-size;
+  background: var(--crema);
+  box-shadow: 0 0 60px rgba(0, 0, 0, .35);
+  visibility: hidden;
+}
+.invitation.visible { visibility: visible; }
+
+.sec {
+  --u: calc(100cqw / 1080);
+  position: relative;
+  text-align: center;
+  padding: calc(170 * var(--u)) calc(60 * var(--u));
+}
+.sec--crema {
+  background: var(--crema) url('../img/papel.jpg') top center / 800px auto;
+  color: var(--bordo);
+}
+.sec--bordo { background: var(--bordo); color: var(--crema); }
+
+/* Títulos caligráficos (imágenes recortadas del diseño) */
+.titulo { display: block; margin: 0 auto; height: auto; }
+
+/* ---------- Tipografía ---------- */
+.t-body {
+  font-size: calc(36 * var(--u));
+  letter-spacing: .1em;
+  line-height: 1.55;
+  font-weight: 400;
+}
+.t-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: calc(64 * var(--u));
+  line-height: 1.2;
+}
+.t-fecha {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: calc(76 * var(--u));
+  line-height: 1.2;
+}
+.t-lugar {
+  font-weight: 300;
+  font-size: calc(42 * var(--u));
+  letter-spacing: .14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.todo { color: var(--todo); font-weight: 700; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-block;
+  margin-top: calc(70 * var(--u));
+  padding: calc(26 * var(--u)) calc(64 * var(--u));
+  border: calc(2 * var(--u)) solid currentColor;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: 500 calc(40 * var(--u)) / 1 var(--sans);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+.btn:hover, .btn:focus-visible { background: rgba(142, 93, 100, .14); }
+.sec--bordo .btn:hover, .sec--bordo .btn:focus-visible { background: rgba(232, 223, 216, .14); }
+.btn:active { transform: scale(.97); }
+.btn:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+/* ---------- 0. Portada ---------- */
+.portada { padding: 0; background: var(--crema); }
+.portada img { display: block; width: 100%; height: auto; }
+
+/* ---------- 1. Lugar y horario ---------- */
+.lugar { padding-top: calc(190 * var(--u)); }
+.lugar .fotos { display: block; width: calc(855 * var(--u)); height: auto; margin: 0 auto; }
+.lugar .titulo { width: calc(485 * var(--u)); margin-top: calc(125 * var(--u)); }
+.lugar .t-fecha { margin-top: calc(110 * var(--u)); }
+.lugar .t-lugar { margin-top: calc(48 * var(--u)); }
+
+/* ---------- 2. Cronograma ---------- */
+.cronograma .titulo { width: calc(414 * var(--u)); }
+.cronograma ul { list-style: none; margin-top: calc(90 * var(--u)); }
+.evt { margin-bottom: calc(150 * var(--u)); min-height: calc(260 * var(--u)); }
+.evt:last-child { margin-bottom: 0; }
+.evt img { display: block; margin: 0 auto calc(26 * var(--u)); height: auto; }
+.evt .hora {
+  font-weight: 300;
+  font-size: calc(42 * var(--u));
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.evt .nombre {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: calc(62 * var(--u));
+  line-height: 1.2;
+}
+/* Cuando el evento no tiene icono, se reserva el mismo alto */
+.evt .icon-slot { height: calc(215 * var(--u)); display: flex; align-items: flex-end; justify-content: center; margin-bottom: calc(26 * var(--u)); }
+.evt .icon-slot img { margin: 0; max-height: 100%; width: auto; }
+
+/* ---------- 3. Dress code ---------- */
+.dress .titulo { width: calc(402 * var(--u)); }
+.dress .icono { display: block; width: calc(250 * var(--u)); height: auto; margin: calc(100 * var(--u)) auto 0; transform-origin: 50% 0; }
+.dress .t-sub { margin-top: calc(120 * var(--u)); }
+.dress .t-body { margin-top: calc(30 * var(--u)); }
+
+/* ---------- 4. Información adicional ---------- */
+.info .titulo { width: calc(642 * var(--u)); }
+.info .bloque { margin-top: calc(130 * var(--u)); }
+.info .bloque .t-body { margin-top: calc(40 * var(--u)); }
+.info .bloque .t-body + .t-body { margin-top: calc(34 * var(--u)); }
+.info .bloque strong { font-weight: 700; }
+
+/* ---------- 5. Confirmación ---------- */
+.confirmacion .titulo { width: calc(428 * var(--u)); }
+.confirmacion .t-body { margin-top: calc(110 * var(--u)); }
+.confirmacion .t-body + .t-body { margin-top: calc(40 * var(--u)); }
+.confirmacion .agenda {
+  margin-top: calc(110 * var(--u));
+  font-size: calc(36 * var(--u));
+  font-style: italic;
+  letter-spacing: .1em;
+  line-height: 1.6;
+}
+.confirmacion .agenda a { color: inherit; font-weight: 700; text-underline-offset: 4px; }
+
+/* ---------- 6. Regalos ---------- */
+.regalos .titulo { width: calc(261 * var(--u)); }
+.regalos .t-sub { margin-top: calc(120 * var(--u)); }
+.regalos .t-body { margin-top: calc(50 * var(--u)); }
+
+/* ---------- 7. Playlist ---------- */
+.playlist .icono { display: block; width: calc(160 * var(--u)); height: auto; margin: 0 auto; transform-origin: 50% 80%; }
+.playlist .titulo { width: calc(507 * var(--u)); margin-top: calc(100 * var(--u)); }
+.playlist .t-body { margin-top: calc(90 * var(--u)); }
+
+/* ---------- 8. Cierre ---------- */
+.cierre .titulo { width: calc(470 * var(--u)); }
+.cierre .monograma { display: block; width: calc(238 * var(--u)); height: auto; margin: calc(110 * var(--u)) auto 0; }
+
+/* ---------- Animación de iconos ---------- */
+.anim { transform-origin: 50% 50%; will-change: transform; }
+
+@keyframes float   { 0%,100% { transform: translateY(0); }          50% { transform: translateY(-8px); } }
+@keyframes sway    { 0%,100% { transform: rotate(-3deg); }          50% { transform: rotate(3deg); } }
+@keyframes hang    { 0%,100% { transform: rotate(-2.5deg); }        50% { transform: rotate(2.5deg); } }
+@keyframes swing   { 0%,100% { transform: rotate(-6deg); }          50% { transform: rotate(6deg); } }
+@keyframes cheers  { 0%,100% { transform: rotate(-3deg) translateY(0); } 45% { transform: rotate(3deg) translateY(-6px); } 60% { transform: rotate(3deg) translateY(-6px); } }
+@keyframes beat    { 0%,100% { transform: scale(1) rotate(0); } 30% { transform: scale(1.06) rotate(-2deg); } 60% { transform: scale(1.02) rotate(1.5deg); } }
+
+/* Se animan solo cuando están a la vista (ver main.js) */
+.anim { animation-play-state: paused; }
+.anim.in-view { animation-play-state: running; }
+
+.anim-anillos   { animation: sway   4.5s ease-in-out infinite; }
+.anim-cubiertos { animation: float  3.8s ease-in-out infinite; }
+.anim-martinis  { animation: cheers 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
+.anim-disco     { animation: swing  4.2s ease-in-out infinite; transform-origin: 50% 0; }
+.anim-traje     { animation: hang   5s   ease-in-out infinite; }
+.anim-gramofono { animation: beat   2.6s ease-in-out infinite; }
+
+/* Aparición suave al hacer scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.in-view { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim, .anim.in-view { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Pop ups ---------- */
+.modal {
+  --u: 1px;
+  margin: auto;
+  width: min(88vw, 380px);
+  padding: 34px 28px 30px;
+  border: 0;
+  border-radius: 22px;
+  background: var(--crema) url('../img/papel.jpg') center / 800px auto;
+  color: var(--bordo);
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+.modal::backdrop { background: rgba(58, 18, 22, .62); backdrop-filter: blur(3px); }
+.modal[open] { animation: modal-in .28s ease; }
+@keyframes modal-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+
+.modal h3 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 26px; line-height: 1.2; }
+.modal .cerrar {
+  position: absolute; top: 10px; right: 12px;
+  width: 36px; height: 36px; border: 0; background: none;
+  color: var(--bordo); font-size: 26px; line-height: 1; cursor: pointer;
+}
+.modal .dato { margin-top: 22px; }
+.modal .dato small { display: block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .75; }
+.modal .dato strong { display: block; margin-top: 6px; font-size: 20px; letter-spacing: .08em; word-break: break-all; }
+.modal .btn { margin-top: 14px; padding: 12px 26px; font-size: 14px; border-width: 1px; }
+.modal hr { border: 0; border-top: 1px solid rgba(116, 37, 42, .25); margin: 24px 0 0; }
+.modal .btn.copiado { background: var(--bordo); color: var(--crema); }

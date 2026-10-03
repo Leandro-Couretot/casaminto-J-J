@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3a1216">
+<title>Juli &amp; Joaco — Invitación de casamiento</title>
+<meta name="description" content="¡Nos casamos! 05 de diciembre de 2026 — La Posada Multiespacio. Queremos celebrarlo con vos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/sobre.css">
+<noscript><style>body.locked{overflow:auto}.stage{display:none}.invitation{visibility:visible}</style></noscript>
+</head>
+<body class="locked">
+
+<!-- ============ INVITACIÓN (queda detrás del sobre hasta abrirlo) ============ -->
+<main class="invitation" id="invite" aria-hidden="true">
+
+  <!-- 0. Portada -->
+  <section class="sec portada">
+    <h1 class="sr-only">Juli &amp; Joaco — ¡Nos casamos! y queremos celebrarlo con vos…</h1>
+    <img src="img/portada.jpg" width="1079" height="1917"
+         alt="Juli y Joaco. ¡Nos casamos! y queremos celebrarlo con vos…">
+  </section>
+
+  <!-- 1. Lugar y horario -->
+  <section class="sec sec--bordo lugar">
+    <img class="fotos" src="img/fotos.jpg" width="855" height="855" alt="Fotos de Juli y Joaco">
+    <h2><img class="titulo" src="img/title-lugar.png" alt="Lugar y horario"></h2>
+    <p class="t-fecha">05 de diciembre 2026</p>
+    <p class="t-lugar">La Posada Multiespacio<br>17:00 hs</p>
+    <a class="btn" href="#" data-link="comoLlegar" target="_blank" rel="noopener">¿Cómo llegar?</a>
+  </section>
+
+  <!-- 2. Cronograma -->
+  <section class="sec sec--crema cronograma">
+    <h2><img class="titulo" src="img/title-cronograma.png" alt="Cronograma"></h2>
+    <ul>
+      <li class="evt reveal">
+        <div class="icon-slot"><img class="anim anim-anillos" src="icons/anillos.png" width="190" height="135" alt="" style="width:calc(190 * var(--u))"></div>
+        <p class="hora">17:00 hs</p>
+        <p class="nombre">ceremonia</p>
+      </li>
+      <li class="evt reveal">
+        <div class="icon-slot"><img class="anim anim-martinis" src="icons/ICONO1.svg" alt="" style="width:calc(185 * var(--u))"></div>
+        <p class="hora">18:00 hs</p>
+        <p class="nombre">recepción</p>
+      </li>
+      <li class="evt reveal">
+        <div class="icon-slot"><img class="anim anim-cubiertos" src="icons/cubiertos.png" width="130" height="215" alt="" style="width:calc(130 * var(--u))"></div>
+        <p class="hora">19:30 hs</p>
+        <p class="nombre">cena</p>
+      </li>
+      <li class="evt reveal">
+        <div class="icon-slot"><img class="anim anim-disco" src="icons/ICONO2.svg" alt="" style="width:calc(185 * var(--u))"></div>
+        <p class="hora">20:30 hs</p>
+        <p class="nombre">fiesta</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 3. Dress code -->
+  <section class="sec sec--bordo dress">
+    <h2><img class="titulo" src="img/title-dresscode.png" alt="Dress Code"></h2>
+    <img class="icono anim anim-traje" src="icons/traje-vestido.png" width="247" height="272" alt="Un traje y un vestido de fiesta colgados">
+    <p class="t-sub">Formal elegante</p>
+    <p class="t-body">Sugerimos evitar el uso<br>del color bordó y colores claros.</p>
+  </section>
+
+  <!-- 4. Información adicional -->
+  <section class="sec sec--crema info">
+    <h2><img class="titulo" src="img/title-info.png" alt="Información adicional"></h2>
+
+    <div class="bloque">
+      <h3 class="t-sub">Recomendaciones<br>de hospedaje</h3>
+      <p class="t-body">Wyndham Nordelta, Tigre.</p>
+      <a class="btn" href="#" data-link="hospedaje" target="_blank" rel="noopener">Contacto</a>
+    </div>
+
+    <div class="bloque">
+      <h3 class="t-sub">Recomendaciones<br>de traslado</h3>
+      <p class="t-body"><strong>Cavaci Travel.</strong> Para traslados desde CABA y Wyndham Nordelta.</p>
+      <p class="t-body"><strong class="todo" data-text="alquilerNombre">XXX Nombre.</strong> Para alquiler de auto.</p>
+      <button class="btn" type="button" data-modal="modal-traslado">Contacto</button>
+    </div>
+  </section>
+
+  <!-- 5. Confirmación de asistencia -->
+  <section class="sec sec--bordo confirmacion">
+    <h2><img class="titulo" src="img/title-confirmacion.png" alt="Confirmación de asistencia"></h2>
+    <p class="t-body">Por favor, confirmá tu asistencia<br>antes del 15 de noviembre.</p>
+    <p class="t-body">Si fuiste invitado con un acompañante,<br>completar un formulario por persona.</p>
+    <a class="btn" href="#" data-link="rsvp" target="_blank" rel="noopener">RSVP</a>
+    <p class="agenda">Agendá el evento en tu Google Calendar<br>haciendo <a href="#" data-link="calendar" target="_blank" rel="noopener">CLICK ACÁ</a></p>
+  </section>
+
+  <!-- 6. Regalos -->
+  <section class="sec sec--crema regalos">
+    <h2><img class="titulo" src="img/title-regalos.png" alt="Regalos"></h2>
+    <p class="t-sub">¡El mejor regalo<br>es tu presencia!</p>
+    <p class="t-body">Si deseás hacernos otro regalo, podés colaborar con nuestra luna de miel.</p>
+    <button class="btn" type="button" data-modal="modal-banco">Datos bancarios</button>
+  </section>
+
+  <!-- 7. Playlist -->
+  <section class="sec sec--bordo playlist">
+    <img class="icono anim anim-gramofono" src="icons/gramofono.png" width="160" height="205" alt="Un gramófono">
+    <h2><img class="titulo" src="img/title-playlist.png" alt="Nuestra playlist"></h2>
+    <p class="t-body">Si creés que hay alguna canción que no puede dejar de sonar esa noche, nos encantaría que la sumes a nuestra playlist.</p>
+    <a class="btn" href="#" data-link="playlist" target="_blank" rel="noopener">Quiero colaborar</a>
+  </section>
+
+  <!-- 8. Cierre -->
+  <section class="sec sec--crema cierre">
+    <h2><img class="titulo" src="img/title-esperamos.png" alt="¡Te esperamos!"></h2>
+    <img class="monograma" src="img/monograma.png" width="238" height="320" alt="Monograma J &amp; J">
+  </section>
+</main>
+
+<!-- ============ POP UPS ============ -->
+<dialog class="modal" id="modal-traslado" aria-labelledby="t-traslado">
+  <button class="cerrar" type="button" data-close aria-label="Cerrar">×</button>
+  <h3 id="t-traslado">Traslado y alquiler de auto</h3>
+
+  <div class="dato">
+    <small>Traslados</small>
+    <strong style="letter-spacing:.04em">Cavaci Travel</strong>
+    <a class="btn" href="#" data-link="traslado" target="_blank" rel="noopener">Contactar</a>
+  </div>
+  <hr>
+  <div class="dato">
+    <small>Alquiler de auto</small>
+    <strong data-text="alquilerNombre">XXX Nombre</strong>
+  </div>
+  <div class="dato">
+    <small>Código de descuento</small>
+    <strong data-text="alquilerCodigo">XXXX</strong>
+    <button class="btn" type="button" data-copy="alquilerCodigo">Copiar código</button>
+  </div>
+</dialog>
+
+<dialog class="modal" id="modal-banco" aria-labelledby="t-banco">
+  <button class="cerrar" type="button" data-close aria-label="Cerrar">×</button>
+  <h3 id="t-banco">Datos bancarios</h3>
+  <div class="dato">
+    <small>Alias</small>
+    <strong data-text="bancoAlias">ALIAS.PLACEHOLDER</strong>
+    <button class="btn" type="button" data-copy="bancoAlias">Copiar alias</button>
+  </div>
+</dialog>
+
+<!-- ============ SOBRE ANIMADO ============ -->
+<main class="stage" id="stage">
+  <div class="shadow">
+    <div class="envelope">
+      <div class="back"></div>
+
+      <div class="letter" id="letter">
+        <div class="letter-inner">
+          <p class="l1">Te invitamos a</p>
+          <p class="l2">nuestro casamiento</p>
+        </div>
+      </div>
+
+      <div class="front" aria-hidden="true">
+        <i class="l"></i><i class="r"></i><i class="b"></i>
+      </div>
+
+      <div class="flap" aria-hidden="true"></div>
+
+      <button class="seal" id="seal" type="button" aria-label="Abrir la invitación">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="15" cy="20" r="9"/>
+          <circle cx="25" cy="20" r="9"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="hint">Tocá el sello para abrir</p>
+    <p class="alt"><button type="button" id="skip">Entrar sin animación</button></p>
+  </div>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/sobre.js"></script>
+</body>
+</html>
