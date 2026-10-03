@@ -141,7 +141,8 @@ body {
 }
 /* Cuando el evento no tiene icono, se reserva el mismo alto */
 .evt .icon-slot { height: calc(215 * var(--u)); display: flex; align-items: flex-end; justify-content: center; margin-bottom: calc(26 * var(--u)); }
-.evt .icon-slot img { margin: 0; max-height: 100%; width: auto; }
+.evt .icon-slot img { margin: 0; max-height: 100%; }
+.evt .icon-slot > img { width: auto; height: auto; }   /* imagen suelta (cubiertos): usa el ancho de su style */
 
 /* ---------- 3. Dress code ---------- */
 .dress .titulo { width: calc(402 * var(--u)); }
@@ -218,44 +219,6 @@ body {
   0%, 100% { transform: rotate(-4deg) scale(1); }
   50%      { transform: rotate(4deg)  scale(1.04); }
 }
-
-/* ---- Par que choca (copas y cubiertos): dos mitades que pivotan desde la base ---- */
-.par { position: relative; margin: 0 auto; aspect-ratio: var(--ar); }
-.par .mitad { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.par .izq { clip-path: var(--clip-izq); transform-origin: var(--pi) 100%; animation: choca-izq 4.2s ease-in-out infinite; }
-.par .der { clip-path: var(--clip-der);             transform-origin: var(--pd) 100%; animation: choca-der 4.2s ease-in-out infinite; }
-.par .chispa { left: var(--sx); top: var(--cy); --s: 46; animation: chispa 4.2s ease-out infinite; }
-
-/* se separan, toman impulso, chocan y rebotan */
-@keyframes choca-izq {
-  0%, 12%  { rotate: 0deg; }
-  30%      { rotate: calc(var(--ang) * -1); }
-  40%      { rotate: calc(var(--ang) * .55); }
-  46%      { rotate: calc(var(--ang) * .15); }
-  54%      { rotate: calc(var(--ang) * .35); }
-  70%, 100%{ rotate: 0deg; }
-}
-@keyframes choca-der {
-  0%, 12%  { rotate: 0deg; }
-  30%      { rotate: var(--ang); }
-  40%      { rotate: calc(var(--ang) * -.55); }
-  46%      { rotate: calc(var(--ang) * -.15); }
-  54%      { rotate: calc(var(--ang) * -.35); }
-  70%, 100%{ rotate: 0deg; }
-}
-@keyframes chispa {
-  0%, 36%  { opacity: 0; scale: .2; rotate: 0deg; }
-  41%      { opacity: 1; scale: 1.25; rotate: 30deg; }
-  60%      { opacity: 0; scale: .5; rotate: 80deg; }
-  100%     { opacity: 0; scale: .2; }
-}
-
-.par-cubiertos {
-  --ar: 130 / 215; --pi: 24%; --pd: 78%; --ang: 7deg; --sx: 48%; --cy: 12%;
-  --clip-izq: inset(0 52% 0 0);
-  --clip-der: inset(0 0 0 48%);
-}
-.par-cubiertos .chispa { --s: 40; }
 
 /* ---- Copas (SVG propio): cada copa pivota desde su pie, se alejan, chocan y rebotan ---- */
 .copas { display: block; margin: 0 auto; height: auto; overflow: visible;

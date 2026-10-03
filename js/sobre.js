@@ -1,5 +1,5 @@
 /* Animación del sobre: al tocar el sello se rompe, se abre la solapa y el sobre
- * se funde directo con la invitación (sin paso intermedio de la carta). */
+ * se funde directo con la invitación (la carta solo asoma un poco para mostrar lo que hay adentro). */
 (() => {
   const stage  = document.getElementById('stage');
   const seal   = document.getElementById('seal');
@@ -26,8 +26,9 @@
     if (reduce) { reveal(); return; }
 
     stage.classList.add('breaking');                       // se rompe el sello
-    setTimeout(() => stage.classList.add('open'),  350);   // se abre la solapa
-    setTimeout(reveal,                            1500);   // pasa directo a la invitación
+    setTimeout(() => stage.classList.add('open'),   350);   // se abre la solapa
+    setTimeout(() => stage.classList.add('rising'), 950);   // la carta asoma: se ve lo que hay adentro
+    setTimeout(reveal,                             2150);   // pasa directo a la invitación
   }
 
   seal.addEventListener('click', openEnvelope);

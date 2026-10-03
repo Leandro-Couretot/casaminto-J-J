@@ -6,9 +6,9 @@ Fecha del evento: **05 de diciembre de 2026**, La Posada Multiespacio, 17:00 hs.
 ## Cómo trabajar en este repo
 
 - Responder y comentar en **español**.
-- **Confirmar con el usuario lo que se va a hacer antes de hacerlo.**
-- **No hacer commit ni push hasta que el usuario lo pida.** La rama de trabajo es `claude/busy-ritchie-fpn680`.
-- No crear Pull Requests salvo pedido explícito.
+- **Confirmar con el usuario lo que se va a hacer antes de hacerlo** cuando el pedido sea ambiguo o grande. Para el push a `main` ya hay confirmación permanente (ver abajo).
+- **Después de cada tanda de cambios: commit y push directo a `main` sin esperar confirmación** (el usuario lo mira en la página pública de GitHub Pages: “siempre subilo así lo veo”). Subir también a la rama de trabajo `claude/busy-ritchie-fpn680`.
+  Antes de subir, probar el cambio en local. No crear Pull Requests salvo pedido explícito.
 
 ## Estructura
 
@@ -33,9 +33,9 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 - La columna de la invitación mide máx. 480 px. Los tamaños usan `--u` (= 1 px del diseño original de 1080 px de ancho, escalado al ancho real).
 - Secciones, en orden: Portada · Lugar y horario · Cronograma · Dress Code · Información adicional · Confirmación de asistencia · Regalos · Nuestra playlist · Cierre.
 - Iconos animados (CSS, solo mientras están a la vista; se desactivan con `prefers-reduced-motion`):
-  - anillos: giran despacio y brilla el diamante.
+  - anillos: giran despacio y brilla el diamante. Los iconos del cronograma se miden en `style="width:calc(N * var(--u))"` en `index.html`; **no** poner `width` en `.evt .icon-slot img` (pisa ese ancho y los deja enormes).
   - copas: **recreadas como SVG propio** (`icons/copas.svg`, inline en `index.html`), una por una y con trazo a mano, para que cada copa pivote desde su pie: se alejan, toman impulso, **chocan** con chispa y gotas, y rebotan. Estilo parecido a `ICONO1.svg` (que ya no se usa).
-  - cubiertos: el PNG está **partido en dos mitades** (`.par` en `css/styles.css`, con `clip-path`) que brindan igual. Si la diseñadora manda tenedor y cuchillo por separado, reemplazar el truco.
+  - cubiertos: **sin animación** (imagen quieta, a pedido de la diseñadora).
   - bola de espejos: se balancea desde el hilo y tiene destellos.
   - traje y vestido: cuelgan de la percha y giran apenas (efecto 3D).
   - gramófono: late y salen notas musicales.
@@ -52,7 +52,7 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 
 ## Sobre y música
 
-- Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → el sobre se acerca y se funde **directo** con la invitación. No hay paso de la carta.
+- Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → la carta asoma un poco y muestra la portada (`img/carta.jpg`, “JULI & JOACO”) → el sobre se acerca y se funde **directo** con la invitación. La carta **no** crece a pantalla completa.
 - El mismo toque en el sello **arranca la música** (los navegadores exigen una interacción del usuario). Botón redondo abajo a la derecha para silenciar/reactivar.
 - La música se configura en `js/config.js` → `musica` (`videoId` de YouTube, `volumen`, `inicio`). Con `videoId: ''` se desactiva y se oculta el botón.
 - Si el video no se puede reproducir (privado, sin permiso para incrustar, sin conexión), el botón se oculta solo.
@@ -91,7 +91,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder.
 ### Sobre animado
 - [x] El código original apuntaba a un sitio de Canva dentro de un `<iframe>`; ahora el sobre se funde con la invitación de esta misma página (sin iframe).
 - [ ] Se recoloreó el sobre a bordó/crema (el original era verde oscuro/dorado). Confirmar con los novios.
-- [ ] Texto de la carta que se asoma al abrir la solapa: “Te invitamos a / nuestro casamiento” — confirmar o cambiar.
+- [x] La carta del sobre muestra la portada (`img/carta.jpg`, imagen que pasó la diseñadora). Si cambia la portada, reemplazar ese archivo.
 - [x] Sello con el monograma J&J (pedido de la diseñadora).
 - [ ] Se agregó el botón “Entrar sin animación” bajo el sobre (no estaba en el original).
 
@@ -102,7 +102,8 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder.
 
 ### Publicación
 - [x] Primera versión subida a la rama `main` (a pedido del usuario) para publicar con **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/ (root)`). El sitio queda **público**, con las fotos de la pareja.
-- [ ] Los cambios de animaciones, sobre, música y pop ups (segunda tanda) **todavía no están subidos**: esperar el pedido del usuario.
-- [ ] Verificar que GitHub Pages esté activo y anotar acá el link final.
+- [x] Segunda tanda (sobre, animaciones, música, pop ups, copas) subida a `main`.
+- [x] Tercera tanda (carta del sobre con la portada, tamaño de anillos/bola de espejos, cubiertos sin animación) subida a `main`.
+- [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).
