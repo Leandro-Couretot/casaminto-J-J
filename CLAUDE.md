@@ -18,7 +18,8 @@ css/styles.css    Estilos de la invitación y de los pop ups
 css/sobre.css     Estilos del sobre animado (paleta bordó/crema)
 js/config.js      ⭐ Links, código de descuento y alias (todo lo editable está acá)
 js/main.js        Links, pop ups, botón copiar, animaciones al hacer scroll
-js/sobre.js       Animación del sobre (sello → solapa → carta → invitación)
+js/sobre.js       Animación del sobre (sello → solapa → se funde con la invitación)
+js/musica.js      Música de fondo (YouTube IFrame API) y botón de silenciar
 img/              Portada, fotos, títulos caligráficos, textura de papel, monograma
 icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 ```
@@ -32,7 +33,14 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 - La columna de la invitación mide máx. 480 px. Los tamaños usan `--u` (= 1 px del diseño original de 1080 px de ancho, escalado al ancho real).
 - Secciones, en orden: Portada · Lugar y horario · Cronograma · Dress Code · Información adicional · Confirmación de asistencia · Regalos · Nuestra playlist · Cierre.
 - Iconos animados (CSS, solo mientras están a la vista; se desactivan con `prefers-reduced-motion`):
-  anillos (balanceo), martinis (brindis), cubiertos (flotan), bola de espejos (se balancea desde arriba), traje y vestido (cuelgan de la percha), gramófono (pulso).
+  - anillos: giran despacio y brilla el diamante.
+  - copas y cubiertos: el dibujo está **partido en dos mitades** (`.par` en `css/styles.css`, con `clip-path`) que se separan, **chocan** con una chispa y rebotan.
+    En las copas el corte es diagonal porque los vasos se cruzan arriba; si la diseñadora manda cada copa por separado, reemplazar el truco por dos imágenes.
+  - bola de espejos: se balancea desde el hilo y tiene destellos.
+  - traje y vestido: cuelgan de la percha y giran apenas (efecto 3D).
+  - gramófono: late y salen notas musicales.
+- Todo el contenido **aparece de a poco al hacer scroll** (clase `.reveal`, la agrega `js/main.js`; usa `translate` para no pisar las animaciones de los iconos).
+- Tipografía de los **pop ups**: `--font-titulo` en `css/styles.css` (hoy *Pinyon Script*, parecida a la de los títulos). Ver pendientes.
 - Los iconos `ICONO1` (martinis) e `ICONO2` (bola de espejos) son SVG originales de la diseñadora.
   Los demás (`anillos`, `cubiertos`, `traje-vestido`, `gramofono`) son PNG transparentes recortados de las páginas del diseño.
 
@@ -42,16 +50,23 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
   (En el diseño original el código de descuento se veía en la página; ahora está solo dentro del pop up.)
 - **Regalos → DATOS BANCARIOS**: **alias con botón “Copiar alias”**.
 
+## Sobre y música
+
+- Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → el sobre se acerca y se funde **directo** con la invitación. No hay paso de la carta.
+- El mismo toque en el sello **arranca la música** (los navegadores exigen una interacción del usuario). Botón redondo abajo a la derecha para silenciar/reactivar.
+- La música se configura en `js/config.js` → `musica` (`videoId` de YouTube, `volumen`, `inicio`). Con `videoId: ''` se desactiva y se oculta el botón.
+- Si el video no se puede reproducir (privado, sin permiso para incrustar, sin conexión), el botón se oculta solo.
+
 ## ⏳ PENDIENTES
 
 ### Datos y links (completar en `js/config.js`)
-Hoy todos los links apuntan a `https://www.google.com` como placeholder.
+Los links pendientes apuntan a `https://www.google.com` como placeholder.
 - [ ] `links.comoLlegar` — Google Maps de La Posada Multiespacio
 - [ ] `links.hospedaje` — contacto del Wyndham Nordelta (WhatsApp / web)
 - [ ] `links.traslado` — contacto de Cavaci Travel (WhatsApp / web)
 - [ ] `links.rsvp` — formulario de confirmación de asistencia (**fecha límite: 15 de noviembre**)
 - [ ] `links.calendar` — link “Agregar a Google Calendar”
-- [ ] `links.playlist` — playlist colaborativa de Spotify
+- [x] `links.playlist` — playlist de Spotify (cargada). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
 - [ ] `alquilerAuto.nombre` — empresa de alquiler de auto (hoy: `XXX Nombre`, se ve en **rojo** en la página)
 - [ ] `alquilerAuto.codigo` — código de descuento (hoy: `XXXX`)
 - [ ] `banco.alias` — alias para la luna de miel (hoy: `ALIAS.PLACEHOLDER`)
@@ -64,20 +79,30 @@ Hoy todos los links apuntan a `https://www.google.com` como placeholder.
 - [ ] `icons/ICONO3.svg` (moño con corazones J&J) e `ICONO4.svg` (copas de brindis con moños) **no se usan todavía** — definir dónde van (¿Regalos, Confirmación, el sobre?).
 - [ ] Textura de papel: `img/papel.jpg` es un mosaico espejado generado a partir del diseño; reemplazar por la textura original si la tienen.
 
+### Música
+- [ ] Hoy suena **un video de YouTube** (`Vte_kf5CSSM`) en un reproductor casi invisible. **Es solo para probar**: no se pudo verificar desde el entorno de desarrollo (sin acceso a YouTube) que ese video permita incrustarse.
+- [ ] Para la versión final, usar música **con licencia / libre de derechos** como archivo propio (`<audio>`), porque las canciones comerciales tienen derechos de autor y el reproductor de YouTube oculto va contra sus términos.
+- [ ] Elegir canción definitiva, volumen y segundo de inicio.
+- [ ] Probar en iPhone y Android: el audio solo arranca tras el toque en el sello.
+
+### Tipografía
+- [ ] Pop ups: usar la **fuente real** de los títulos (Dulcinea, de Adobe Fonts). Pedir a la diseñadora que cree un *Web Project* en fonts.adobe.com, pasar el link de CSS (se pega en el `<head>` de `index.html`, hay un comentario) y poner su nombre de familia al principio de `--font-titulo`. Alternativa: exportar como SVG los títulos de los pop ups ("Traslado y alquiler de auto", "Datos bancarios").
+
 ### Sobre animado
-- [ ] El código original apuntaba a un sitio de Canva dentro de un `<iframe>`. Ahora la carta revela la invitación de esta misma página (sin iframe).
+- [x] El código original apuntaba a un sitio de Canva dentro de un `<iframe>`; ahora el sobre se funde con la invitación de esta misma página (sin iframe).
 - [ ] Se recoloreó el sobre a bordó/crema (el original era verde oscuro/dorado). Confirmar con los novios.
-- [ ] Texto de la carta del sobre: “Te invitamos a / nuestro casamiento” — confirmar o cambiar.
-- [ ] Sello: hoy muestra dos círculos entrelazados (anillos). Evaluar usar el monograma J&J.
+- [ ] Texto de la carta que se asoma al abrir la solapa: “Te invitamos a / nuestro casamiento” — confirmar o cambiar.
+- [x] Sello con el monograma J&J (pedido de la diseñadora).
 - [ ] Se agregó el botón “Entrar sin animación” bajo el sobre (no estaba en el original).
 
 ### Contenido a revisar
 - [ ] Texto de la sección Confirmación: “completar un formulario por persona” — ¿cambiar a “completá”?
-- [ ] Probar en celulares reales (iOS Safari y Android Chrome): sobre, pop ups y botón de copiar.
+- [ ] Probar en celulares reales (iOS Safari y Android Chrome): sobre, música, animaciones, pop ups y botón de copiar.
 - [ ] Pasar la tipografía de Google Fonts a archivos locales si se quiere funcionar sin conexión.
 
 ### Publicación
-- [x] Subido a la rama `main` (a pedido del usuario) para publicar con **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/ (root)`). El sitio queda **público**, con las fotos de la pareja.
+- [x] Primera versión subida a la rama `main` (a pedido del usuario) para publicar con **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/ (root)`). El sitio queda **público**, con las fotos de la pareja.
+- [ ] Los cambios de animaciones, sobre, música y pop ups (segunda tanda) **todavía no están subidos**: esperar el pedido del usuario.
 - [ ] Verificar que GitHub Pages esté activo y anotar acá el link final.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).

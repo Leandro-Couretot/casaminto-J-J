@@ -57,14 +57,44 @@
     });
   });
 
-  // Animaciones al entrar en pantalla
-  const items = document.querySelectorAll('.anim, .reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => e.target.classList.toggle('in-view', e.isIntersecting));
-    }, { threshold: 0.25 });
-    items.forEach((el) => io.observe(el));
-  } else {
-    items.forEach((el) => el.classList.add('in-view'));
+  // Aparición progresiva (una sola vez) + iconos que se animan solo mientras se ven
+  const REVEAL = [
+    '.sec:not(.portada) h2', '.lugar .fotos', '.t-sub', '.t-body', '.t-fecha', '.t-lugar',
+    '.sec .btn', '.agenda', '.evt', '.dress .icono', '.gramofono', '.cierre .monograma'
+  ].join(',');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('.sec:not(.portada)').forEach((sec) => {
+    let i = 0;
+    sec.querySelectorAll(REVEAL).forEach((el) => {
+      // evita animar dos veces un elemento dentro de otro ya animado
+      if (el.parentElement.closest('.reveal')) return;
+      el.classList.add('reveal');
+      el.style.setProperty('--d', Math.min(i * 0.08, 0.24) + 's');
+      i += 1;
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const movibles = document.querySelectorAll('.anim, .anim-box');
+
+  if (!('IntersectionObserver' in window) || reduce) {
+    reveals.forEach((el) => el.classList.add('shown'));
+    movibles.forEach((el) => el.classList.add('in-view'));
+    return;
   }
+
+  const ioReveal = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('shown');
+      ioReveal.unobserve(e.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+  reveals.forEach((el) => ioReveal.observe(el));
+
+  const ioMove = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle('in-view', e.isIntersecting));
+  }, { threshold: 0.2 });
+  movibles.forEach((el) => ioMove.observe(el));
 })();

@@ -6,6 +6,9 @@
   --todo: #e3000f;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
+  /* Tipografía de los títulos de la tarjeta. Si se carga la fuente real
+     (Adobe Fonts), anteponerla acá; mientras tanto, Pinyon Script se le parece. */
+  --font-titulo: 'Pinyon Script', 'Snell Roundhand', cursive;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,8 +37,12 @@ body {
   background: var(--crema);
   box-shadow: 0 0 60px rgba(0, 0, 0, .35);
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 1.2s ease;
 }
-.invitation.visible { visibility: visible; }
+.invitation.visible { visibility: visible; opacity: 1; }
+.invitation.visible .portada img { animation: portada-in 2.2s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes portada-in { from { scale: 1.08; opacity: .6; } to { scale: 1; opacity: 1; } }
 
 .sec {
   --u: calc(100cqw / 1080);
@@ -176,34 +183,135 @@ body {
 .cierre .titulo { width: calc(470 * var(--u)); }
 .cierre .monograma { display: block; width: calc(238 * var(--u)); height: auto; margin: calc(110 * var(--u)) auto 0; }
 
-/* ---------- Animación de iconos ---------- */
-.anim { transform-origin: 50% 50%; will-change: transform; }
+/* ---------- Animación de iconos ----------
+   Todo se mueve solo cuando está a la vista (main.js agrega .in-view). */
+/* !important: la propiedad abreviada `animation:` de cada icono reiniciaría el play-state */
+.anim-box, .anim-box *, .anim { animation-play-state: paused !important; }
+.anim-box.in-view, .anim-box.in-view *, .anim.in-view { animation-play-state: running !important; }
 
-@keyframes float   { 0%,100% { transform: translateY(0); }          50% { transform: translateY(-8px); } }
-@keyframes sway    { 0%,100% { transform: rotate(-3deg); }          50% { transform: rotate(3deg); } }
-@keyframes hang    { 0%,100% { transform: rotate(-2.5deg); }        50% { transform: rotate(2.5deg); } }
-@keyframes swing   { 0%,100% { transform: rotate(-6deg); }          50% { transform: rotate(6deg); } }
-@keyframes cheers  { 0%,100% { transform: rotate(-3deg) translateY(0); } 45% { transform: rotate(3deg) translateY(-6px); } 60% { transform: rotate(3deg) translateY(-6px); } }
-@keyframes beat    { 0%,100% { transform: scale(1) rotate(0); } 30% { transform: scale(1.06) rotate(-2deg); } 60% { transform: scale(1.02) rotate(1.5deg); } }
+/* Contenedor genérico de icono */
+.ico { position: relative; display: block; margin: 0 auto; }
+.ico > img { display: block; width: 100%; height: auto; }
 
-/* Se animan solo cuando están a la vista (ver main.js) */
-.anim { animation-play-state: paused; }
-.anim.in-view { animation-play-state: running; }
+/* Destellos (estrella de 4 puntas) */
+.destello, .chispa {
+  position: absolute;
+  width: calc(var(--s, 34) * var(--u));
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: #c9969e;
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  opacity: 0;
+  pointer-events: none;
+}
+.sec--bordo .destello { background: #f3e6e1; }
+.destello { left: var(--x); top: var(--y); animation: destello 3.4s ease-in-out var(--d, 0s) infinite; }
+@keyframes destello {
+  0%, 100% { opacity: 0; scale: .2; rotate: 0deg; }
+  18%      { opacity: 1; scale: 1;  rotate: 45deg; }
+  40%      { opacity: 0; scale: .3; rotate: 90deg; }
+}
 
-.anim-anillos   { animation: sway   4.5s ease-in-out infinite; }
-.anim-cubiertos { animation: float  3.8s ease-in-out infinite; }
-.anim-martinis  { animation: cheers 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
-.anim-disco     { animation: swing  4.2s ease-in-out infinite; transform-origin: 50% 0; }
-.anim-traje     { animation: hang   5s   ease-in-out infinite; }
-.anim-gramofono { animation: beat   2.6s ease-in-out infinite; }
+/* ---- Anillos: giran despacio y brilla el diamante ---- */
+.ico-anillos > img { animation: anillos 5s ease-in-out infinite; transform-origin: 50% 60%; }
+@keyframes anillos {
+  0%, 100% { transform: rotate(-4deg) scale(1); }
+  50%      { transform: rotate(4deg)  scale(1.04); }
+}
 
-/* Aparición suave al hacer scroll */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
-.reveal.in-view { opacity: 1; transform: none; }
+/* ---- Par que choca (copas y cubiertos): dos mitades que pivotan desde la base ---- */
+.par { position: relative; margin: 0 auto; aspect-ratio: var(--ar); }
+.par .mitad { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.par .izq { clip-path: var(--clip-izq); transform-origin: var(--pi) 100%; animation: choca-izq 4.2s ease-in-out infinite; }
+.par .der { clip-path: var(--clip-der);             transform-origin: var(--pd) 100%; animation: choca-der 4.2s ease-in-out infinite; }
+.par .chispa { left: var(--sx); top: var(--cy); --s: 46; animation: chispa 4.2s ease-out infinite; }
+
+/* se separan, toman impulso, chocan y rebotan */
+@keyframes choca-izq {
+  0%, 12%  { rotate: 0deg; }
+  30%      { rotate: calc(var(--ang) * -1); }
+  40%      { rotate: calc(var(--ang) * .55); }
+  46%      { rotate: calc(var(--ang) * .15); }
+  54%      { rotate: calc(var(--ang) * .35); }
+  70%, 100%{ rotate: 0deg; }
+}
+@keyframes choca-der {
+  0%, 12%  { rotate: 0deg; }
+  30%      { rotate: var(--ang); }
+  40%      { rotate: calc(var(--ang) * -.55); }
+  46%      { rotate: calc(var(--ang) * -.15); }
+  54%      { rotate: calc(var(--ang) * -.35); }
+  70%, 100%{ rotate: 0deg; }
+}
+@keyframes chispa {
+  0%, 36%  { opacity: 0; scale: .2; rotate: 0deg; }
+  41%      { opacity: 1; scale: 1.25; rotate: 30deg; }
+  60%      { opacity: 0; scale: .5; rotate: 80deg; }
+  100%     { opacity: 0; scale: .2; }
+}
+
+.par-copas {
+  --ar: 170.55 / 176.33; --pi: 37%; --pd: 67%; --ang: 5deg; --sx: 58%; --cy: 16%;
+  /* corte diagonal que sigue el borde de la copa izquierda (los vasos se cruzan arriba) */
+  --clip-izq: polygon(0 0, 65.4% 0, 65.4% 14.9%, 40.5% 46.9%, 50% 46.9%, 50% 100%, 0 100%);
+  --clip-der: polygon(100% 0, 65.4% 0, 65.4% 14.9%, 40.5% 46.9%, 50% 46.9%, 50% 100%, 100% 100%);
+}
+.par-cubiertos {
+  --ar: 130 / 215; --pi: 24%; --pd: 78%; --ang: 7deg; --sx: 48%; --cy: 12%;
+  --clip-izq: inset(0 52% 0 0);
+  --clip-der: inset(0 0 0 48%);
+}
+.par-cubiertos .chispa { --s: 40; }
+
+/* ---- Bola de espejos: se balancea desde el hilo y gira ---- */
+.ico-disco > img { animation: disco 4.6s ease-in-out infinite; transform-origin: 50% 0; }
+@keyframes disco {
+  0%, 100% { transform: rotate(-7deg); }
+  50%      { transform: rotate(7deg); }
+}
+
+/* ---- Traje y vestido: cuelgan de la percha y giran apenas ---- */
+.anim-traje { animation: percha 6s ease-in-out infinite; transform-origin: 50% 0; }
+@keyframes percha {
+  0%, 100% { transform: perspective(700px) rotateY(-14deg) rotate(-2.5deg); }
+  50%      { transform: perspective(700px) rotateY(14deg)  rotate(2.5deg); }
+}
+
+/* ---- Gramófono: late al ritmo y salen notas ---- */
+.gramofono { position: relative; width: calc(160 * var(--u)); margin: 0 auto; }
+.gramofono > img { display: block; width: 100%; height: auto; transform-origin: 50% 85%; animation: gramofono 2.4s ease-in-out infinite; }
+@keyframes gramofono {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25%      { transform: scale(1.07) rotate(-2.5deg); }
+  55%      { transform: scale(1.02) rotate(1.5deg); }
+}
+.nota {
+  position: absolute;
+  left: var(--x);
+  top: 18%;
+  font: 400 calc(46 * var(--u)) / 1 Georgia, serif;
+  color: #f3e6e1;
+  opacity: 0;
+  animation: nota 3.6s ease-out var(--d, 0s) infinite;
+}
+@keyframes nota {
+  0%   { opacity: 0;  transform: translate(0, 0) rotate(0deg) scale(.7); }
+  15%  { opacity: .95; }
+  100% { opacity: 0;  transform: translate(var(--dx, 20px), calc(-130 * var(--u))) rotate(var(--r, 18deg)) scale(1.1); }
+}
+
+/* ---------- Aparición progresiva al hacer scroll ----------
+   (usa `translate`, que no pisa los transform de las animaciones) */
+.reveal {
+  opacity: 0;
+  translate: 0 calc(46 * var(--u, 1px));
+  transition: opacity 1s ease var(--d, 0s), translate 1s cubic-bezier(.2, .7, .2, 1) var(--d, 0s);
+}
+.reveal.shown { opacity: 1; translate: 0 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .anim, .anim.in-view { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .anim, .anim *, .anim-box, .anim-box *, .nota, .destello, .chispa { animation: none !important; }
+  .reveal { opacity: 1; translate: none; transition: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -224,7 +332,7 @@ body {
 .modal[open] { animation: modal-in .28s ease; }
 @keyframes modal-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
 
-.modal h3 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 26px; line-height: 1.2; }
+.modal h3 { font-family: var(--font-titulo); font-style: normal; font-weight: 400; font-size: 40px; line-height: 1.05; }
 .modal .cerrar {
   position: absolute; top: 10px; right: 12px;
   width: 36px; height: 36px; border: 0; background: none;
@@ -236,3 +344,32 @@ body {
 .modal .btn { margin-top: 14px; padding: 12px 26px; font-size: 14px; border-width: 1px; }
 .modal hr { border: 0; border-top: 1px solid rgba(116, 37, 42, .25); margin: 24px 0 0; }
 .modal .btn.copiado { background: var(--bordo); color: var(--crema); }
+
+/* ---------- Botón de música ---------- */
+.musica {
+  position: fixed;
+  right: max(14px, calc(50vw - 240px + 14px));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 40;
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(232, 223, 216, .55);
+  border-radius: 50%;
+  background: rgba(116, 37, 42, .88);
+  color: var(--crema);
+  cursor: pointer;
+  opacity: 0; pointer-events: none;
+  transition: opacity .8s ease .6s, transform .2s ease;
+  backdrop-filter: blur(4px);
+}
+body:not(.locked) .musica { opacity: 1; pointer-events: auto; }
+.musica:active { transform: scale(.92); }
+.musica:focus-visible { outline: 2px solid var(--crema); outline-offset: 3px; }
+.musica svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.musica .on  { display: none; }
+.musica.suena .on  { display: block; }
+.musica.suena .off { display: none; }
+.musica[hidden] { display: none; }
+
+/* Reproductor de YouTube: solo se usa para el audio */
+#yt-player { position: fixed; left: -400px; bottom: 0; width: 200px; height: 200px; opacity: .01; pointer-events: none; }
