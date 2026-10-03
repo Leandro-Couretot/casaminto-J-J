@@ -250,18 +250,42 @@ body {
   100%     { opacity: 0; scale: .2; }
 }
 
-.par-copas {
-  --ar: 170.55 / 176.33; --pi: 37%; --pd: 67%; --ang: 5deg; --sx: 58%; --cy: 16%;
-  /* corte diagonal que sigue el borde de la copa izquierda (los vasos se cruzan arriba) */
-  --clip-izq: polygon(0 0, 65.4% 0, 65.4% 14.9%, 40.5% 46.9%, 50% 46.9%, 50% 100%, 0 100%);
-  --clip-der: polygon(100% 0, 65.4% 0, 65.4% 14.9%, 40.5% 46.9%, 50% 46.9%, 50% 100%, 100% 100%);
-}
 .par-cubiertos {
   --ar: 130 / 215; --pi: 24%; --pd: 78%; --ang: 7deg; --sx: 48%; --cy: 12%;
   --clip-izq: inset(0 52% 0 0);
   --clip-der: inset(0 0 0 48%);
 }
 .par-cubiertos .chispa { --s: 40; }
+
+/* ---- Copas (SVG propio): cada copa pivota desde su pie, se alejan, chocan y rebotan ---- */
+.copas { display: block; margin: 0 auto; height: auto; overflow: visible;
+  fill: none; stroke: #8e5d64; stroke-linecap: round; stroke-linejoin: round; }
+.copas .mov { transform-origin: 0 268px; animation: copa 4.2s ease-in-out infinite; }
+@keyframes copa {
+  0%, 8%   { transform: rotate(2deg);  animation-timing-function: ease-in-out; }
+  28%      { transform: rotate(-6deg); animation-timing-function: cubic-bezier(.6, 0, 1, .6); }   /* toman impulso */
+  38%      { transform: rotate(5.5deg); animation-timing-function: ease-out; }                    /* ¡chocan! */
+  44%      { transform: rotate(0deg);  animation-timing-function: ease-in-out; }                  /* rebotan */
+  51%      { transform: rotate(2.8deg); }
+  62%, 100%{ transform: rotate(2deg); }
+}
+.copas .chispa-svg { fill: #b8626e; stroke: none; transform-origin: 0 0; animation: chispa-svg 4.2s ease-out infinite; opacity: 0; }
+@keyframes chispa-svg {
+  0%, 36% { opacity: 0; transform: scale(.2) rotate(0deg); }
+  39%     { opacity: 1; transform: scale(1.3) rotate(25deg); }
+  58%     { opacity: 0; transform: scale(.5) rotate(70deg); }
+  100%    { opacity: 0; }
+}
+.copas .gota { fill: #b8626e; stroke: none; opacity: 0; animation: gota 4.2s ease-out infinite; }
+.copas .g1 { --dx: -44px; --dy: -58px; }
+.copas .g2 { --dx: 6px;   --dy: -72px; animation-delay: .03s; }
+.copas .g3 { --dx: 46px;  --dy: -52px; animation-delay: .06s; }
+@keyframes gota {
+  0%, 37% { opacity: 0; transform: translate(0, 0); }
+  41%     { opacity: 1; }
+  60%     { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+  100%    { opacity: 0; }
+}
 
 /* ---- Bola de espejos: se balancea desde el hilo y gira ---- */
 .ico-disco > img { animation: disco 4.6s ease-in-out infinite; transform-origin: 50% 0; }

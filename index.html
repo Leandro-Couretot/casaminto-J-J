@@ -53,11 +53,49 @@
       </li>
       <li class="evt">
         <div class="icon-slot">
-          <div class="par par-copas anim-box" style="width:calc(200 * var(--u))" aria-hidden="true">
-            <img class="mitad izq" src="icons/ICONO1.svg" alt="">
-            <img class="mitad der" src="icons/ICONO1.svg" alt="">
-            <span class="chispa"></span>
-          </div>
+          <svg class="copas anim-box" viewBox="0 -18 380 312" style="width:calc(250 * var(--u))" aria-hidden="true">
+            <defs>
+    <!-- Una copa de martini con aceitunas, dibujada a mano (centrada en x=0) -->
+    <g id="copa">
+      <!-- borde -->
+      <path stroke-width="3.6" d="M-90,42 C-62,29 52,27 90,37"/>
+      <path stroke-width="3.2" d="M-91,41 C-58,54 56,54 88,40"/>
+      <path stroke-width="1.6" d="M-80,45 C-48,37 46,36 78,43"/>
+      <!-- cuenco, con la punta redondeada -->
+      <path stroke-width="3.8" d="M-89,43 C-66,82 -36,116 -14,148 C-9,157 -5,162 -4,170"/>
+      <path stroke-width="3.8" d="M89,41 C66,80 36,116 14,148 C9,157 5,162 4,170"/>
+      <path stroke-width="1.7" d="M-84,50 C-62,84 -34,112 -12,142"/>
+      <path stroke-width="1.7" d="M84,48 C62,82 34,112 12,142"/>
+      <!-- líquido -->
+      <path stroke-width="2.4" d="M-72,61 C-32,72 34,70 72,58"/>
+      <path stroke-width="1.6" d="M-30,121 C-14,142 14,142 30,121"/>
+      <path stroke-width="1.5" d="M-50,76 C-24,84 20,84 46,75"/>
+      <!-- tallo que se ensancha hacia el pie -->
+      <path stroke-width="3.6" d="M-4,170 C-5,205 -5,236 -7,262"/>
+      <path stroke-width="3.6" d="M4,170 C5,205 5,236 7,262"/>
+      <path stroke-width="1.5" d="M0,176 C1,204 0,232 0,254"/>
+      <!-- pie -->
+      <path stroke-width="3.6" d="M-7,262 C-22,263 -42,266 -47,272 C-32,281 32,281 47,272 C42,266 22,263 7,262"/>
+      <path stroke-width="1.6" d="M-30,272 C-14,277 14,277 30,272"/>
+      <!-- palito y aceitunas -->
+      <path stroke-width="3.2" d="M-84,3 L-6,96"/>
+      <path stroke-width="1.5" d="M-80,2 L-3,92"/>
+      <ellipse stroke-width="3.2" cx="-87" cy="2" rx="12" ry="6.5" transform="rotate(42 -87 2)"/>
+      <circle stroke-width="3.4" cx="-50" cy="50" r="15"/>
+      <circle stroke-width="1.5" cx="-48" cy="52" r="11"/>
+      <path stroke-width="2.2" d="M-57,45 C-55,41 -50,41 -49,45 C-50,49 -56,49 -57,45"/>
+      <circle stroke-width="3.4" cx="-25" cy="82" r="13"/>
+      <circle stroke-width="1.5" cx="-23" cy="84" r="9"/>
+      <path stroke-width="2.2" d="M-31,78 C-29,74 -25,74 -24,78 C-25,82 -30,82 -31,78"/>
+    </g>
+  </defs>
+            <g transform="translate(112 0)"><g class="mov"><use href="#copa"/></g></g>
+            <g transform="translate(268 0) scale(-1 1)"><g class="mov"><use href="#copa"/></g></g>
+            <g class="impacto" transform="translate(190 44)">
+              <path class="chispa-svg" d="M0,-36 L8,-8 L36,0 L8,8 L0,36 L-8,8 L-36,0 L-8,-8 Z"/>
+              <circle class="gota g1" r="5.5"/><circle class="gota g2" r="4.2"/><circle class="gota g3" r="5"/>
+            </g>
+          </svg>
         </div>
         <p class="hora">18:00 hs</p>
         <p class="nombre">recepción</p>

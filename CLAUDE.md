@@ -34,14 +34,14 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 - Secciones, en orden: Portada · Lugar y horario · Cronograma · Dress Code · Información adicional · Confirmación de asistencia · Regalos · Nuestra playlist · Cierre.
 - Iconos animados (CSS, solo mientras están a la vista; se desactivan con `prefers-reduced-motion`):
   - anillos: giran despacio y brilla el diamante.
-  - copas y cubiertos: el dibujo está **partido en dos mitades** (`.par` en `css/styles.css`, con `clip-path`) que se separan, **chocan** con una chispa y rebotan.
-    En las copas el corte es diagonal porque los vasos se cruzan arriba; si la diseñadora manda cada copa por separado, reemplazar el truco por dos imágenes.
+  - copas: **recreadas como SVG propio** (`icons/copas.svg`, inline en `index.html`), una por una y con trazo a mano, para que cada copa pivote desde su pie: se alejan, toman impulso, **chocan** con chispa y gotas, y rebotan. Estilo parecido a `ICONO1.svg` (que ya no se usa).
+  - cubiertos: el PNG está **partido en dos mitades** (`.par` en `css/styles.css`, con `clip-path`) que brindan igual. Si la diseñadora manda tenedor y cuchillo por separado, reemplazar el truco.
   - bola de espejos: se balancea desde el hilo y tiene destellos.
   - traje y vestido: cuelgan de la percha y giran apenas (efecto 3D).
   - gramófono: late y salen notas musicales.
 - Todo el contenido **aparece de a poco al hacer scroll** (clase `.reveal`, la agrega `js/main.js`; usa `translate` para no pisar las animaciones de los iconos).
 - Tipografía de los **pop ups**: `--font-titulo` en `css/styles.css` (hoy *Pinyon Script*, parecida a la de los títulos). Ver pendientes.
-- Los iconos `ICONO1` (martinis) e `ICONO2` (bola de espejos) son SVG originales de la diseñadora.
+- `ICONO2` (bola de espejos) es un SVG original de la diseñadora. `ICONO1` (martinis) quedó **sin usar**: lo reemplazan las copas recreadas (`icons/copas.svg`).
   Los demás (`anillos`, `cubiertos`, `traje-vestido`, `gramofono`) son PNG transparentes recortados de las páginas del diseño.
 
 ## Pop ups
