@@ -57,6 +57,16 @@
     });
   });
 
+  // Si se toca el reproductor de Spotify, se pausa la música de fondo para que no suenen dos a la vez
+  const spotify = document.getElementById('spotify');
+  if (spotify) {
+    window.addEventListener('blur', () => {
+      setTimeout(() => {
+        if (document.activeElement === spotify && window.Musica) window.Musica.pause();
+      }, 0);
+    });
+  }
+
   // Aparición progresiva (una sola vez) + iconos que se animan solo mientras se ven
   const REVEAL = [
     '.sec:not(.portada) h2', '.lugar .fotos', '.t-sub', '.t-body', '.t-fecha', '.t-lugar',

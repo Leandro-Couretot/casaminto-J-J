@@ -9,6 +9,8 @@ Fecha del evento: **05 de diciembre de 2026**, La Posada Multiespacio, 17:00 hs.
 - **Confirmar con el usuario lo que se va a hacer antes de hacerlo** cuando el pedido sea ambiguo o grande. Para el push a `main` ya hay confirmación permanente (ver abajo).
 - **Después de cada tanda de cambios: commit y push directo a `main` sin esperar confirmación** (el usuario lo mira en la página pública de GitHub Pages: “siempre subilo así lo veo”). Subir también a la rama de trabajo `claude/busy-ritchie-fpn680`.
   Antes de subir, probar el cambio en local. No crear Pull Requests salvo pedido explícito.
+- **Anti-caché**: GitHub Pages deja el HTML en caché ~10 min, y si el navegador mezcla un HTML viejo con CSS/JS nuevos la página se rompe (pasó con los cubiertos).
+  Por eso `index.html` carga CSS, JS e `img/carta.jpg` con `?v=AAAAMMDDx`. **En cada tanda que se suba, cambiar ese `?v=` en todos los archivos de `index.html`.**
 
 ## Estructura
 
@@ -52,9 +54,10 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 
 ## Sobre y música
 
-- Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → la carta asoma un poco y muestra la portada (`img/carta.jpg`, “JULI & JOACO”) → el sobre se acerca y se funde **directo** con la invitación. La carta **no** crece a pantalla completa.
+- Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → la carta asoma un poco y muestra la portada (`img/carta.jpg`, “JULI & JOACO”, versión con más aire arriba) → el sobre se acerca y se funde **directo** con la invitación. La carta **no** crece a pantalla completa.
 - El mismo toque en el sello **arranca la música** (los navegadores exigen una interacción del usuario). Botón redondo abajo a la derecha para silenciar/reactivar.
 - La música se configura en `js/config.js` → `musica` (`videoId` de YouTube, `volumen`, `inicio`). Con `videoId: ''` se desactiva y se oculta el botón.
+- La sección **Nuestra playlist** tiene el **reproductor de Spotify embebido** (`#spotify` en `index.html`, playlist `6fJRPqEHhDv3OePuHxS2Dt`) y debajo el botón “Quiero colaborar”. Si el invitado toca el reproductor de Spotify, la música de fondo se **pausa sola** (`js/main.js` + `Musica.pause()`). Sin sesión iniciada, Spotify reproduce solo vistas previas de 30 s.
 - Si el video no se puede reproducir (privado, sin permiso para incrustar, sin conexión), el botón se oculta solo.
 
 ## ⏳ PENDIENTES

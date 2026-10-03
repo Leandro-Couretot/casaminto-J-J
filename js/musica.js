@@ -4,7 +4,7 @@
 (() => {
   const cfg = (window.CONFIG && window.CONFIG.musica) || {};
   const btn = document.getElementById('musica');
-  window.Musica = { play() {}, toggle() {} };
+  window.Musica = { play() {}, toggle() {}, pause() {} };
   if (!cfg.videoId || !btn) return;
 
   let player = null;
@@ -72,6 +72,10 @@
     play() {
       quiereSonar = true;
       if (listo) arrancar();
+    },
+    pause() {
+      quiereSonar = false;
+      if (listo && sonando) { player.pauseVideo(); marcar(false); }
     },
     toggle() {
       if (!listo) { quiereSonar = !quiereSonar; return; }

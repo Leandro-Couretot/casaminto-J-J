@@ -179,6 +179,8 @@ body {
 .playlist .icono { display: block; width: calc(160 * var(--u)); height: auto; margin: 0 auto; transform-origin: 50% 80%; }
 .playlist .titulo { width: calc(507 * var(--u)); margin-top: calc(100 * var(--u)); }
 .playlist .t-body { margin-top: calc(90 * var(--u)); }
+.spotify { margin: calc(80 * var(--u)) auto 0; width: calc(900 * var(--u)); max-width: 100%; }
+.spotify iframe { display: block; width: 100%; height: 352px; border: 0; border-radius: 14px; }
 
 /* ---------- 8. Cierre ---------- */
 .cierre .titulo { width: calc(470 * var(--u)); }

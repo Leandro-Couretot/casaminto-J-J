@@ -77,14 +77,14 @@ body.locked { overflow: hidden; height: 100%; }
   transition: transform .9s cubic-bezier(.3, .7, .2, 1);
 }
 /* la carta asoma lo justo para que se lea qué hay adentro */
-.stage.rising .letter { transform: translateY(-47%); }
+.stage.rising .letter { transform: translateY(-50%); }
 
 .letter-img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 52%;   /* deja el título JULI & JOACO en el centro de la carta */
+  object-position: 50% 55%;   /* deja el título JULI & JOACO en el centro de la carta */
 }
 
 /* Frente del sobre (bolsillo) */
