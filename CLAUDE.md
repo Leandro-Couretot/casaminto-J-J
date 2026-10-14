@@ -10,7 +10,7 @@ Fecha del evento: **05 de diciembre de 2026**, La Posada Multiespacio, 17:00 hs.
 - **Después de cada tanda de cambios: commit y push directo a `main` sin esperar confirmación** (el usuario lo mira en la página pública de GitHub Pages: “siempre subilo así lo veo”). Subir también a la rama de trabajo `claude/busy-ritchie-fpn680`.
   Antes de subir, probar el cambio en local. No crear Pull Requests salvo pedido explícito.
 - **Anti-caché**: GitHub Pages deja el HTML en caché ~10 min, y si el navegador mezcla un HTML viejo con CSS/JS nuevos la página se rompe (pasó con los cubiertos).
-  Por eso `index.html` carga CSS, JS e `img/carta.jpg` con `?v=AAAAMMDDx`. **En cada tanda que se suba, cambiar ese `?v=` en todos los archivos de `index.html`.**
+  Por eso `index.html` carga CSS, JS y las imágenes que cambian (`img/carta.jpg`, `img/portada.jpg`, `img/portada-texto.png`) con `?v=AAAAMMDDx`. **En cada tanda que se suba, cambiar ese `?v=` en todos los archivos de `index.html`** (y agregarlo a cualquier imagen que se reemplace con el mismo nombre).
 
 ## Estructura
 
@@ -75,8 +75,10 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] `banco.cuentas` — cuenta en pesos (`JULIYJOACO.2026`) y cuenta en USD (`JULIYJOA.2026`), cada una con su CBU
 
 ### Diseño / assets
-- [ ] **Portada**: `img/portada.jpg` es la página completa del diseño con el título “JULI & JOACO” y el texto incluidos en la imagen (1079×1917). Para mejor calidad, pedir a la diseñadora: fondo **sin texto** + título en **SVG** (texto convertido a contornos).
-- [ ] **Fotos**: `img/fotos.jpg` es la grilla 2×2 recortada del diseño (855×855). Pedir las 4 fotos originales en JPG (~1500 px) para mejor nitidez en pantallas retina.
+- [x] **Texto de la portada** “¡Nos casamos! y queremos celebrarlo con vos…”: ahora es una **capa aparte** (`img/portada-texto.png`, clase `.portada-texto` en `css/styles.css`) para poder moverlo. Ajuste pedido: **15 px más arriba y +3 pt de fuente** (36 → 39 pt, ×1,0833) en medidas del diseño de 1079 px de ancho. Para volver a moverlo/agrandarlo, tocar `width`, `left` y `top` de `.portada-texto`.
+  `img/portada.jpg` ya no trae ese texto: se borró de la imagen y se rellenó el papel (hay un parche invisible de 670×122 px en esa zona). Si la diseñadora cambia la portada, hay que volver a separar el texto.
+- [ ] **Portada**: `img/portada.jpg` sigue trayendo el título “JULI & JOACO” dibujado en la imagen (1079×1917). Para mejor calidad, pedir a la diseñadora: fondo **sin texto** + título en **SVG** (texto convertido a contornos).
+- [ ] **Fotos**: `img/fotos.jpg` es la grilla 2×2 recortada del diseño (855×855). **Pendiente: reemplazarla por la grilla nueva de 4 fotos** (el usuario la va a pasar como JPG; el PDF de Drive pesa 89 MB y no se puede leer desde el entorno). Idealmente pedir las 4 fotos originales en JPG (~1500 px) para mejor nitidez en pantallas retina.
 - [ ] **Títulos caligráficos** (`img/title-*.png`) y **monograma** (`img/monograma.png`) están recortados de capturas de 1080 px. Ideal: SVG con texto en contornos desde Illustrator.
 - [ ] **Iconos PNG** (`anillos`, `cubiertos`, `traje-vestido`, `gramofono`): pedir los SVG originales; reemplazar manteniendo las clases `anim anim-*`.
 - [ ] `icons/ICONO3.svg` (moño con corazones J&J) e `ICONO4.svg` (copas de brindis con moños) **no se usan todavía** — definir dónde van (¿Regalos, Confirmación, el sobre?).
@@ -109,6 +111,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] Segunda tanda (sobre, animaciones, música, pop ups, copas) subida a `main`.
 - [x] Tercera tanda (carta del sobre con la portada, tamaño de anillos/bola de espejos, cubiertos sin animación) subida a `main`.
 - [x] Cuarta tanda (Spotify embebido, carta nueva, anti-caché) y quinta (datos reales: bancos, Waycar, hotel, playlist) subidas a `main`.
+- [x] Sexta tanda (texto de la portada más arriba y más grande) subida a `main`.
 - [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).
