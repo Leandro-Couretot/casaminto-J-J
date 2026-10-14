@@ -327,7 +327,14 @@ body {
   width: 36px; height: 36px; border: 0; background: none;
   color: var(--bordo); font-size: 26px; line-height: 1; cursor: pointer;
 }
+.modal { max-height: 88dvh; overflow-y: auto; }
 .modal .dato { margin-top: 22px; }
+.modal .cuenta { margin-top: 26px; padding-top: 20px; border-top: 1px solid rgba(116, 37, 42, .25); }
+.modal .cuenta:first-child { border-top: 0; padding-top: 0; margin-top: 18px; }
+.modal .cuenta h4 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
+.modal .cuenta .dato { margin-top: 14px; }
+.modal .dato strong.cbu { font-size: 17px; letter-spacing: .04em; }
+.modal .nota-modal { margin-top: 8px; font-size: 13px; line-height: 1.45; opacity: .85; }
 .modal .dato small { display: block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .75; }
 .modal .dato strong { display: block; margin-top: 6px; font-size: 20px; letter-spacing: .08em; word-break: break-all; }
 .modal .btn { margin-top: 14px; padding: 12px 26px; font-size: 14px; border-width: 1px; }

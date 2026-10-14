@@ -6,16 +6,18 @@
 window.CONFIG = {
   links: {
     comoLlegar: 'https://www.google.com',   // TODO: Google Maps de La Posada Multiespacio
-    hospedaje:  'https://www.google.com',   // TODO: contacto Wyndham Nordelta (WhatsApp / web)
+    hospedaje:  'https://share.google/w9Xt6810jJyRvWxru',   // Wyndham Nordelta Tigre (ficha de Google)
     traslado:   'https://www.google.com',   // TODO: contacto Cavaci Travel (WhatsApp / web)
     rsvp:       'https://www.google.com',   // TODO: formulario de confirmación de asistencia
     calendar:   'https://www.google.com',   // TODO: link "Agregar a Google Calendar"
-    playlist:   'https://open.spotify.com/playlist/6fJRPqEHhDv3OePuHxS2Dt'
+    playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7',
+    alquilerWeb:'https://www.waycarrental.com/'
   },
 
   alquilerAuto: {
-    nombre: 'XXX Nombre',                   // TODO: empresa de alquiler de auto
-    codigo: 'XXXX'                          // TODO: código de descuento
+    nombre: 'Waycar Rental',
+    codigo: 'JULIYJOACO',
+    detalle: '30% de descuento. Válido para reservas creadas entre el 28/11/2026 y el 14/12/2026 en sucursal de Buenos Aires.'
   },
 
   musica: {
@@ -25,6 +27,9 @@ window.CONFIG = {
   },
 
   banco: {
-    alias: 'ALIAS.PLACEHOLDER'              // TODO: alias para la luna de miel
+    cuentas: [
+      { titulo: 'Cuenta en pesos', alias: 'JULIYJOACO.2026', cbu: '4530000800018690050058' },
+      { titulo: 'Cuenta en USD',   alias: 'JULIYJOA.2026',   cbu: '4530000800026563727392' }
+    ]
   }
 };

@@ -48,31 +48,31 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 
 ## Pop ups
 
-- **Traslado → botón CONTACTO (2.º)**: contacto de Cavaci Travel + nombre de la empresa de alquiler de auto + **código de descuento con botón “Copiar código”**.
-  (En el diseño original el código de descuento se veía en la página; ahora está solo dentro del pop up.)
-- **Regalos → DATOS BANCARIOS**: **alias con botón “Copiar alias”**.
+- **Traslado → botón CONTACTO (2.º)**: Cavaci Travel (botón “Contactar”) + alquiler de auto **Waycar Rental** (30 % de descuento, vigencia, botón “Ir al sitio”) + **código de descuento con botón “Copiar código”**.
+  (En el diseño original el código se veía en la página; ahora está solo dentro del pop up.)
+- **Regalos → DATOS BANCARIOS**: **dos cuentas** (pesos y USD), cada una con **alias y CBU** y su botón de copiar. Los datos salen de `js/config.js` → `banco.cuentas` (se pueden agregar más cuentas ahí).
+  Ojo: al ser un sitio público, alias y CBU quedan visibles en el código para cualquiera que abra la página.
 
 ## Sobre y música
 
 - Secuencia: toque en el sello (lacre con el monograma **J&J**, `img/sello-jj.png`) → se rompe → se abre la solapa → la carta asoma un poco y muestra la portada (`img/carta.jpg`, “JULI & JOACO”, versión con más aire arriba) → el sobre se acerca y se funde **directo** con la invitación. La carta **no** crece a pantalla completa.
 - El mismo toque en el sello **arranca la música** (los navegadores exigen una interacción del usuario). Botón redondo abajo a la derecha para silenciar/reactivar.
 - La música se configura en `js/config.js` → `musica` (`videoId` de YouTube, `volumen`, `inicio`). Con `videoId: ''` se desactiva y se oculta el botón.
-- La sección **Nuestra playlist** tiene el **reproductor de Spotify embebido** (`#spotify` en `index.html`, playlist `6fJRPqEHhDv3OePuHxS2Dt`) y debajo el botón “Quiero colaborar”. Si el invitado toca el reproductor de Spotify, la música de fondo se **pausa sola** (`js/main.js` + `Musica.pause()`). Sin sesión iniciada, Spotify reproduce solo vistas previas de 30 s.
+- La sección **Nuestra playlist** tiene el **reproductor de Spotify embebido** (`#spotify` en `index.html`; toma la playlist de `js/config.js` → `links.playlist`, hoy “Juli & Joa - 5D”) y debajo el botón “Quiero colaborar”. Si el invitado toca el reproductor de Spotify, la música de fondo se **pausa sola** (`js/main.js` + `Musica.pause()`). Sin sesión iniciada, Spotify reproduce solo vistas previas de 30 s.
 - Si el video no se puede reproducir (privado, sin permiso para incrustar, sin conexión), el botón se oculta solo.
 
 ## ⏳ PENDIENTES
 
 ### Datos y links (completar en `js/config.js`)
-Los links pendientes apuntan a `https://www.google.com` como placeholder.
+Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya cargados: hospedaje, playlist, alquiler de auto y datos bancarios.
 - [ ] `links.comoLlegar` — Google Maps de La Posada Multiespacio
-- [ ] `links.hospedaje` — contacto del Wyndham Nordelta (WhatsApp / web)
+- [x] `links.hospedaje` — cargado con la **ficha de Google** del Wyndham Nordelta Tigre (`share.google/...`). Si prefieren el WhatsApp o la web del hotel, cambiarlo
 - [ ] `links.traslado` — contacto de Cavaci Travel (WhatsApp / web)
 - [ ] `links.rsvp` — formulario de confirmación de asistencia (**fecha límite: 15 de noviembre**)
 - [ ] `links.calendar` — link “Agregar a Google Calendar”
-- [x] `links.playlist` — playlist de Spotify (cargada). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
-- [ ] `alquilerAuto.nombre` — empresa de alquiler de auto (hoy: `XXX Nombre`, se ve en **rojo** en la página)
-- [ ] `alquilerAuto.codigo` — código de descuento (hoy: `XXXX`)
-- [ ] `banco.alias` — alias para la luna de miel (hoy: `ALIAS.PLACEHOLDER`)
+- [x] `links.playlist` — playlist **“Juli & Joa - 5D”** (`7LvauM5IuMQl19EpjGZUE7`, pasada por la organizadora; reemplaza a la de prueba `6fJRPqEHhDv3OePuHxS2Dt`). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
+- [x] `alquilerAuto` — **Waycar Rental**, código `JULIYJOACO`, 30 % de descuento, válido para reservas creadas entre el 28/11/2026 y el 14/12/2026 en sucursal de Buenos Aires (web: waycarrental.com)
+- [x] `banco.cuentas` — cuenta en pesos (`JULIYJOACO.2026`) y cuenta en USD (`JULIYJOA.2026`), cada una con su CBU
 
 ### Diseño / assets
 - [ ] **Portada**: `img/portada.jpg` es la página completa del diseño con el título “JULI & JOACO” y el texto incluidos en la imagen (1079×1917). Para mejor calidad, pedir a la diseñadora: fondo **sin texto** + título en **SVG** (texto convertido a contornos).
@@ -100,13 +100,15 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder.
 
 ### Contenido a revisar
 - [ ] Texto de la sección Confirmación: “completar un formulario por persona” — ¿cambiar a “completá”?
-- [ ] Probar en celulares reales (iOS Safari y Android Chrome): sobre, música, animaciones, pop ups y botón de copiar.
+- [ ] Probar en celulares reales (iOS Safari y Android Chrome): sobre, música, animaciones, pop ups y botón de copiar (alias y CBU).
+- [ ] Revisar con la organizadora que el código de Waycar y sus fechas estén vigentes antes de mandar la invitación.
 - [ ] Pasar la tipografía de Google Fonts a archivos locales si se quiere funcionar sin conexión.
 
 ### Publicación
 - [x] Primera versión subida a la rama `main` (a pedido del usuario) para publicar con **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/ (root)`). El sitio queda **público**, con las fotos de la pareja.
 - [x] Segunda tanda (sobre, animaciones, música, pop ups, copas) subida a `main`.
 - [x] Tercera tanda (carta del sobre con la portada, tamaño de anillos/bola de espejos, cubiertos sin animación) subida a `main`.
+- [x] Cuarta tanda (Spotify embebido, carta nueva, anti-caché) y quinta (datos reales: bancos, Waycar, hotel, playlist) subidas a `main`.
 - [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).

@@ -4,8 +4,25 @@
   const VALORES = {
     alquilerNombre: C.alquilerAuto.nombre,
     alquilerCodigo: C.alquilerAuto.codigo,
-    bancoAlias: C.banco.alias
+    alquilerDetalle: C.alquilerAuto.detalle
   };
+
+  // Datos bancarios: una tarjeta por cuenta, con alias y CBU copiables
+  const cont = document.getElementById('banco-cuentas');
+  if (cont) {
+    C.banco.cuentas.forEach((cta) => {
+      const bloque = document.createElement('div');
+      bloque.className = 'cuenta';
+      const campos = [['Alias', cta.alias, 'Copiar alias', ''], ['CBU', cta.cbu, 'Copiar CBU', ' cbu']];
+      bloque.innerHTML = `<h4>${cta.titulo}</h4>` + campos.map(([et, val, txt, cls]) => `
+        <div class="dato">
+          <small>${et}</small>
+          <strong class="${cls.trim()}">${val}</strong>
+          <button class="btn" type="button" data-copy-text="${val}">${txt}</button>
+        </div>`).join('');
+      cont.appendChild(bloque);
+    });
+  }
 
   // Links
   document.querySelectorAll('[data-link]').forEach((a) => {
@@ -15,7 +32,7 @@
   // Textos configurables
   document.querySelectorAll('[data-text]').forEach((el) => {
     const v = VALORES[el.dataset.text];
-    if (v) el.textContent = el.closest('.info') ? v + '.' : v;
+    if (v) el.textContent = el.closest('.info') && el.tagName === 'STRONG' ? v + '.' : v;
   });
 
   // Pop ups
@@ -47,10 +64,10 @@
       return ok;
     }
   }
-  document.querySelectorAll('[data-copy]').forEach((btn) => {
+  document.querySelectorAll('[data-copy], [data-copy-text]').forEach((btn) => {
     const original = btn.textContent;
     btn.addEventListener('click', async () => {
-      const ok = await copiar(VALORES[btn.dataset.copy]);
+      const ok = await copiar(btn.dataset.copyText || VALORES[btn.dataset.copy]);
       btn.textContent = ok ? '¡Copiado!' : 'Copialo a mano';
       btn.classList.toggle('copiado', ok);
       setTimeout(() => { btn.textContent = original; btn.classList.remove('copiado'); }, 1800);
@@ -60,6 +77,9 @@
   // Si se toca el reproductor de Spotify, se pausa la música de fondo para que no suenen dos a la vez
   const spotify = document.getElementById('spotify');
   if (spotify) {
+    // el reproductor usa la misma playlist que el botón (js/config.js → links.playlist)
+    const pl = (C.links.playlist || '').match(/playlist\/([A-Za-z0-9]+)/);
+    if (pl) spotify.src = 'https://open.spotify.com/embed/playlist/' + pl[1] + '?utm_source=generator&theme=0';
     window.addEventListener('blur', () => {
       setTimeout(() => {
         if (document.activeElement === spotify && window.Musica) window.Musica.pause();
