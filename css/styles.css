@@ -111,20 +111,22 @@ body {
 
 /* ---------- 0. Portada ---------- */
 .portada { padding: 0; background: var(--crema); --p: calc(100cqw / 1079); }
-/* Texto "¡Nos casamos! y queremos celebrarlo con vos…": capa aparte sobre la portada.
-   Medidas en px del diseño (1079 de ancho). Original: 648×106 centrado en (540, 1666).
-   Ajuste pedido: 15 px más arriba y fuente +3 pt (36 → 39 pt = ×1.0833). */
+/* Texto "¡Nos casamos! y queremos celebrarlo con vos…": texto real (DM Sans) sobre la portada.
+   Medidas en px del diseño (1079 de ancho). Original: DM Sans 43 px, línea 54 px, centro de tinta en y≈1664.
+   Ajustes pedidos: +3 pt de fuente (43 → 46) y subirlo: 15 px primero, 20 px más después (centro en y≈1629). */
 .portada-texto {
   position: absolute;
-  width: calc(648 * 1.0833 * var(--p));      /* 702 */
-  height: auto;
-  left: calc(189 * var(--p));                /* 540 - 702/2 */
-  top: calc(1593.6 * var(--p));              /* (1666 - 15) - 114.8/2 */
+  left: 0;
+  width: 100%;
+  top: calc(1568 * var(--p));
+  margin: 0;
+  text-align: center;
+  font: 400 calc(46 * var(--p)) / 1.256 var(--sans);
+  color: var(--bordo);
 }
 .invitation.visible .portada-texto { animation: texto-in 1.4s ease .9s both; }
 @keyframes texto-in { from { opacity: 0; translate: 0 calc(14 * var(--p)); } to { opacity: 1; translate: 0 0; } }
 .portada > img:first-of-type { display: block; width: 100%; height: auto; }
-.portada-texto { display: block; }
 
 /* ---------- 1. Lugar y horario ---------- */
 .lugar { padding-top: calc(190 * var(--u)); }

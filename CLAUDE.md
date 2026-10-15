@@ -10,7 +10,7 @@ Fecha del evento: **05 de diciembre de 2026**, La Posada Multiespacio, 17:00 hs.
 - **Después de cada tanda de cambios: commit y push directo a `main` sin esperar confirmación** (el usuario lo mira en la página pública de GitHub Pages: “siempre subilo así lo veo”). Subir también a la rama de trabajo `claude/busy-ritchie-fpn680`.
   Antes de subir, probar el cambio en local. No crear Pull Requests salvo pedido explícito.
 - **Anti-caché**: GitHub Pages deja el HTML en caché ~10 min, y si el navegador mezcla un HTML viejo con CSS/JS nuevos la página se rompe (pasó con los cubiertos).
-  Por eso `index.html` carga CSS, JS y las imágenes que cambian (`img/carta.jpg`, `img/portada.jpg`, `img/portada-texto.png`) con `?v=AAAAMMDDx` (también `img/fotos.jpg`). **En cada tanda que se suba, cambiar ese `?v=` en todos los archivos de `index.html`** (y agregarlo a cualquier imagen que se reemplace con el mismo nombre).
+  Por eso `index.html` carga CSS, JS y las imágenes que cambian (`img/carta.jpg`, `img/portada.jpg`) con `?v=AAAAMMDDx` (también `img/fotos.jpg`). **En cada tanda que se suba, cambiar ese `?v=` en todos los archivos de `index.html`** (y agregarlo a cualquier imagen que se reemplace con el mismo nombre).
 
 ## Estructura
 
@@ -75,8 +75,8 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] `banco.cuentas` — cuenta en pesos (`JULIYJOACO.2026`) y cuenta en USD (`JULIYJOA.2026`), cada una con su CBU
 
 ### Diseño / assets
-- [x] **Texto de la portada** “¡Nos casamos! y queremos celebrarlo con vos…”: ahora es una **capa aparte** (`img/portada-texto.png`, clase `.portada-texto` en `css/styles.css`) para poder moverlo. Ajuste pedido: **15 px más arriba y +3 pt de fuente** (36 → 39 pt, ×1,0833) en medidas del diseño de 1079 px de ancho. Para volver a moverlo/agrandarlo, tocar `width`, `left` y `top` de `.portada-texto`.
-  `img/portada.jpg` ya no trae ese texto: se borró de la imagen y se rellenó el papel (hay un parche invisible de 670×122 px en esa zona). Si la diseñadora cambia la portada, hay que volver a separar el texto.
+- [x] **Texto de la portada** “¡Nos casamos! y queremos celebrarlo con vos…”: es **texto real** (DM Sans, `.portada-texto` en `css/styles.css`), no imagen, para que se vea nítido. Medidas del diseño de 1079 px: la fuente original es de **43 px** (medido); ajustes pedidos: **+3 pt → 46 px** y **subirlo 15 px y luego 20 px más** (centro de tinta en y≈1629 en vez de 1664). Para moverlo, tocar `top` (hoy 1568) y `font` de `.portada-texto`.
+  `img/portada.jpg` ya no trae ese texto: se borró de la imagen y se rellenó el papel (parche invisible de 670×122 px). Si la diseñadora cambia la portada, hay que volver a quitar el texto de la imagen.
 - [ ] **Portada**: `img/portada.jpg` sigue trayendo el título “JULI & JOACO” dibujado en la imagen (1079×1917). Para mejor calidad, pedir a la diseñadora: fondo **sin texto** + título en **SVG** (texto convertido a contornos).
 - [x] **Fotos**: `img/fotos.jpg` es la **grilla nueva de 4 fotos** (pasada por el usuario, 1000×1003 px). Si se cambia de nuevo, usar el mismo nombre y subir el `?v=` en `index.html`.
 - [ ] Fotos: si hay una versión de mayor resolución (4 fotos originales en JPG, ~1500 px), mejora la nitidez en pantallas retina.
@@ -113,6 +113,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] Tercera tanda (carta del sobre con la portada, tamaño de anillos/bola de espejos, cubiertos sin animación) subida a `main`.
 - [x] Cuarta tanda (Spotify embebido, carta nueva, anti-caché) y quinta (datos reales: bancos, Waycar, hotel, playlist) subidas a `main`.
 - [x] Sexta tanda (texto de la portada más arriba y más grande) y séptima (grilla nueva de fotos) subidas a `main`.
+- [x] Fecha corregida, canción nueva, botón “Entrar sin animación” eliminado, y texto de la portada pasado a texto real (más arriba) subidos a `main`.
 - [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).
