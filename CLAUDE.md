@@ -46,6 +46,8 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 - `ICONO2` (bola de espejos) es un SVG original de la diseñadora. `ICONO1` (martinis) quedó **sin usar**: lo reemplazan las copas recreadas (`icons/copas.svg`).
   Los demás (`anillos`, `cubiertos`, `traje-vestido`, `gramofono`) son PNG transparentes recortados de las páginas del diseño.
 
+- **Fecha** “05 de diciembre de 2026” (`.t-fecha`): `font-size: 62 * var(--u)`. Está medido para que la línea ocupe ~59 % del ancho, igual que en el diseño original (que no tenía el “de” antes del año; con el “de” y 76 se veía enorme). Playfair Display muestra los números en estilo antiguo (“05”, “2026” con alturas distintas); el diseño los tenía alineados en altura (`font-variant-numeric: lining-nums` los igualaría) — no se tocó porque no se pidió.
+
 ## Pop ups
 
 - **Traslado → botón CONTACTO (2.º)**: Cavaci Travel (botón “Contactar”) + alquiler de auto **Waycar Rental** (30 % de descuento, vigencia, botón “Ir al sitio”) + **código de descuento con botón “Copiar código”**.
@@ -75,7 +77,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] `banco.cuentas` — cuenta en pesos (`JULIYJOACO.2026`) y cuenta en USD (`JULIYJOA.2026`), cada una con su CBU
 
 ### Diseño / assets
-- [x] **Texto de la portada** “¡Nos casamos! y queremos celebrarlo con vos…”: es **texto real** (DM Sans, `.portada-texto` en `css/styles.css`), no imagen, para que se vea nítido. Medidas del diseño de 1079 px: la fuente original es de **43 px** (medido); ajustes pedidos: **+3 pt → 46 px** y **subirlo 15 px y luego 20 px más** (centro de tinta en y≈1629 en vez de 1664). Para moverlo, tocar `top` (hoy 1568) y `font` de `.portada-texto`.
+- [x] **Texto de la portada** “¡Nos casamos! y queremos celebrarlo con vos…”: es **texto real** (DM Sans, `.portada-texto` en `css/styles.css`), no imagen, para que se vea nítido. Medidas del diseño de 1079 px: la fuente original es de **43 px** (medido); ajustes pedidos: **+3 pt → 46 px**, **subirlo 15 px y luego 20 px más** (centro de tinta en y≈1629 en vez de 1664) y por último **5 px de pantalla más** (`top: calc(1568 * var(--p) - 5px)`). Para moverlo, tocar `top` y `font` de `.portada-texto`.
   `img/portada.jpg` ya no trae ese texto: se borró de la imagen y se rellenó el papel (parche invisible de 670×122 px). Si la diseñadora cambia la portada, hay que volver a quitar el texto de la imagen.
 - [ ] **Portada**: `img/portada.jpg` sigue trayendo el título “JULI & JOACO” dibujado en la imagen (1079×1917). Para mejor calidad, pedir a la diseñadora: fondo **sin texto** + título en **SVG** (texto convertido a contornos).
 - [x] **Fotos**: `img/fotos.jpg` es la **grilla nueva de 4 fotos** (pasada por el usuario, 1000×1003 px). Si se cambia de nuevo, usar el mismo nombre y subir el `?v=` en `index.html`.
@@ -114,6 +116,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] Cuarta tanda (Spotify embebido, carta nueva, anti-caché) y quinta (datos reales: bancos, Waycar, hotel, playlist) subidas a `main`.
 - [x] Sexta tanda (texto de la portada más arriba y más grande) y séptima (grilla nueva de fotos) subidas a `main`.
 - [x] Fecha corregida, canción nueva, botón “Entrar sin animación” eliminado, y texto de la portada pasado a texto real (más arriba) subidos a `main`.
+- [x] Ajustes finos: texto de la portada 5 px más arriba y fecha más chica (62) subidos a `main`.
 - [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
 - [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).

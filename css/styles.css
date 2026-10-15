@@ -76,7 +76,7 @@ body {
 .t-fecha {
   font-family: var(--serif);
   font-style: italic;
-  font-size: calc(76 * var(--u));
+  font-size: calc(62 * var(--u));   /* mide como en el diseño: ~59 % del ancho (antes 76 y se veía enorme con el "de" agregado) */
   line-height: 1.2;
 }
 .t-lugar {
@@ -118,7 +118,7 @@ body {
   position: absolute;
   left: 0;
   width: 100%;
-  top: calc(1568 * var(--p));
+  top: calc(1568 * var(--p) - 5px);   /* -5px: ajuste fino, en px de pantalla */
   margin: 0;
   text-align: center;
   font: 400 calc(46 * var(--p)) / 1.256 var(--sans);
