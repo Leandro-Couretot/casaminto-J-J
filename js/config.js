@@ -21,7 +21,7 @@ window.CONFIG = {
   },
 
   musica: {
-    videoId: 'Vte_kf5CSSM',                 // YouTube (prueba). Dejar '' para desactivar la música
+    videoId: 'rbaoKL1Ei0c',                 // YouTube (prueba). Dejar '' para desactivar la música
     volumen: 55,                            // 0-100
     inicio: 0                               // segundo desde el que arranca
   },

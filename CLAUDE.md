@@ -86,7 +86,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [ ] Textura de papel: `img/papel.jpg` es un mosaico espejado generado a partir del diseño; reemplazar por la textura original si la tienen.
 
 ### Música
-- [ ] Hoy suena **un video de YouTube** (`Vte_kf5CSSM`) en un reproductor casi invisible. **Es solo para probar**: no se pudo verificar desde el entorno de desarrollo (sin acceso a YouTube) que ese video permita incrustarse.
+- [ ] Hoy suena **un video de YouTube** (`rbaoKL1Ei0c`) en un reproductor casi invisible. **Es solo para probar**: no se pudo verificar desde el entorno de desarrollo (sin acceso a YouTube) que ese video permita incrustarse.
 - [ ] Para la versión final, usar música **con licencia / libre de derechos** como archivo propio (`<audio>`), porque las canciones comerciales tienen derechos de autor y el reproductor de YouTube oculto va contra sus términos.
 - [ ] Elegir canción definitiva, volumen y segundo de inicio.
 - [ ] Probar en iPhone y Android: el audio solo arranca tras el toque en el sello.
