@@ -350,6 +350,9 @@ body {
 .modal .cuenta h4 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; }
 .modal .cuenta .dato { margin-top: 14px; }
 .modal .dato strong.cbu { font-size: 17px; letter-spacing: .04em; }
+.modal .contactos { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+.modal .contactos .btn { margin-top: 0; padding: 10px 12px; font-size: 12px; letter-spacing: .1em; }
+.modal .datos-contacto span { display: block; word-break: break-all; }
 .modal .nota-modal { margin-top: 8px; font-size: 13px; line-height: 1.45; opacity: .85; }
 .modal .dato small { display: block; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .75; }
 .modal .dato strong { display: block; margin-top: 6px; font-size: 20px; letter-spacing: .08em; word-break: break-all; }

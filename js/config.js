@@ -7,11 +7,18 @@ window.CONFIG = {
   links: {
     comoLlegar: 'https://maps.app.goo.gl/7nqbSM78iBb2CJMZ8',   // Google Maps de La Posada Multiespacio
     hospedaje:  'https://share.google/w9Xt6810jJyRvWxru',   // Wyndham Nordelta Tigre (ficha de Google)
-    traslado:   'https://www.google.com',   // TODO: contacto Cavaci Travel (WhatsApp / web)
     rsvp:       'https://forms.gle/KqwRxe1uDaNRY1QT9',   // formulario de confirmación de asistencia (Google Forms)
     calendar:   'https://www.google.com',   // TODO: link "Agregar a Google Calendar"
     playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7',
     alquilerWeb:'https://www.waycarrental.com/'
+  },
+
+  // Contacto de traslados (desde CABA o desde el Wyndham Nordelta)
+  cavaci: {
+    whatsapp: '5491167807979',              // sin + ni espacios (para wa.me)
+    telefono: '+54 9 11 6780-7979',         // como se muestra
+    correo: 'kavacitravelsrl@gmail.com',
+    instagram: 'cavaci_travel'              // sin @
   },
 
   alquilerAuto: {
