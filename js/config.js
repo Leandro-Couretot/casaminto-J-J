@@ -5,10 +5,10 @@
  */
 window.CONFIG = {
   links: {
-    comoLlegar: 'https://www.google.com',   // TODO: Google Maps de La Posada Multiespacio
+    comoLlegar: 'https://maps.app.goo.gl/7nqbSM78iBb2CJMZ8',   // Google Maps de La Posada Multiespacio
     hospedaje:  'https://share.google/w9Xt6810jJyRvWxru',   // Wyndham Nordelta Tigre (ficha de Google)
     traslado:   'https://www.google.com',   // TODO: contacto Cavaci Travel (WhatsApp / web)
-    rsvp:       'https://www.google.com',   // TODO: formulario de confirmación de asistencia
+    rsvp:       'https://forms.gle/KqwRxe1uDaNRY1QT9',   // formulario de confirmación de asistencia (Google Forms)
     calendar:   'https://www.google.com',   // TODO: link "Agregar a Google Calendar"
     playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7',
     alquilerWeb:'https://www.waycarrental.com/'
