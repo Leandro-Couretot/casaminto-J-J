@@ -99,7 +99,7 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [ ] Se recoloreó el sobre a bordó/crema (el original era verde oscuro/dorado). Confirmar con los novios.
 - [x] La carta del sobre muestra la portada (`img/carta.jpg`, imagen que pasó la diseñadora). Si cambia la portada, reemplazar ese archivo.
 - [x] Sello con el monograma J&J (pedido de la diseñadora).
-- [ ] Se agregó el botón “Entrar sin animación” bajo el sobre (no estaba en el original).
+- [x] El botón “Entrar sin animación” bajo el sobre se **sacó** (pedido del usuario). Ahora el sobre solo se abre tocando el sello.
 
 ### Contenido a revisar
 - [ ] Texto de la sección Confirmación: “completar un formulario por persona” — ¿cambiar a “completá”?

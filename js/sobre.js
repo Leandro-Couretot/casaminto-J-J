@@ -4,7 +4,6 @@
   const stage  = document.getElementById('stage');
   const seal   = document.getElementById('seal');
   const invite = document.getElementById('invite');
-  const skip   = document.getElementById('skip');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let started = false;
 
@@ -32,10 +31,4 @@
   }
 
   seal.addEventListener('click', openEnvelope);
-  skip.addEventListener('click', () => {
-    if (started) return;
-    started = true;
-    if (window.Musica) window.Musica.play();
-    reveal();
-  });
 })();
