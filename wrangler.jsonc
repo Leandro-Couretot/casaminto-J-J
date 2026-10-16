@@ -1,0 +1,9 @@
+{
+  // Publicación en Cloudflare (Workers Builds): sitio estático, sin build.
+  // El nombre tiene que coincidir con el del proyecto en Cloudflare.
+  "name": "juliyjoaco",
+  "compatibility_date": "2026-10-16",
+  "assets": {
+    "directory": "./"
+  }
+}
