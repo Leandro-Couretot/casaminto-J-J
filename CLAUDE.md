@@ -50,7 +50,7 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 
 ## Pop ups
 
-- **Traslado → botón CONTACTO (2.º)**: Cavaci Travel (botones **WhatsApp**, **Correo** e **Instagram**, con los datos visibles debajo) + alquiler de auto **Waycar Rental** (30 % de descuento, vigencia, botón “Ir al sitio”) + **código de descuento con botón “Copiar código”**.
+- **Traslado → botón CONTACTO (2.º)**: Kavaci Travel (botones **WhatsApp**, **Correo** e **Instagram**, con los datos visibles debajo) + alquiler de auto **Waycar Rental** (30 % de descuento, vigencia, botón “Ir al sitio”) + **código de descuento con botón “Copiar código”**.
   (En el diseño original el código se veía en la página; ahora está solo dentro del pop up.)
 - **Regalos → DATOS BANCARIOS**: **dos cuentas** (pesos y USD), cada una con **alias y CBU** y su botón de copiar. Los datos salen de `js/config.js` → `banco.cuentas` (se pueden agregar más cuentas ahí).
   Ojo: al ser un sitio público, alias y CBU quedan visibles en el código para cualquiera que abra la página.
@@ -69,7 +69,7 @@ icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
 Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya cargados: cómo llegar, RSVP, hospedaje, playlist, alquiler de auto y datos bancarios. Falta solo el link de Google Calendar.
 - [x] `links.comoLlegar` — Google Maps de La Posada Multiespacio (`maps.app.goo.gl/7nqbSM78iBb2CJMZ8`)
 - [x] `links.hospedaje` — cargado con la **ficha de Google** del Wyndham Nordelta Tigre (`share.google/...`). Si prefieren el WhatsApp o la web del hotel, cambiarlo
-- [x] Contacto de **Cavaci Travel** (`cavaci` en `js/config.js`): WhatsApp +54 9 11 6780-7979, correo `kavacitravelsrl@gmail.com` (con **k**, tal cual lo pasaron; la empresa se escribe con C — confirmar) e Instagram @cavaci_travel
+- [x] Contacto de **Kavaci Travel** (con **K**; `kavaci` en `js/config.js`): WhatsApp +54 9 11 6780-7979, correo `kavacitravelsrl@gmail.com` e Instagram `@cavaci_travel` — **el usuario de Instagram quedó con C tal cual lo pasaron: confirmar si es `@kavaci_travel`**
 - [x] `links.rsvp` — formulario de Google Forms (`forms.gle/KqwRxe1uDaNRY1QT9`). **Fecha límite de confirmación: 15 de noviembre**
 - [ ] `links.calendar` — link “Agregar a Google Calendar”
 - [x] `links.playlist` — playlist **“Juli & Joa - 5D”** (`7LvauM5IuMQl19EpjGZUE7`, pasada por la organizadora; reemplaza a la de prueba `6fJRPqEHhDv3OePuHxS2Dt`). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones

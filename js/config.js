@@ -13,12 +13,12 @@ window.CONFIG = {
     alquilerWeb:'https://www.waycarrental.com/'
   },
 
-  // Contacto de traslados (desde CABA o desde el Wyndham Nordelta)
-  cavaci: {
+  // Contacto de traslados: Kavaci Travel (desde CABA o desde el Wyndham Nordelta)
+  kavaci: {
     whatsapp: '5491167807979',              // sin + ni espacios (para wa.me)
     telefono: '+54 9 11 6780-7979',         // como se muestra
     correo: 'kavacitravelsrl@gmail.com',
-    instagram: 'cavaci_travel'              // sin @
+    instagram: 'cavaci_travel'              // sin @ — tal cual lo pasaron (con C); confirmar si es @kavaci_travel
   },
 
   alquilerAuto: {

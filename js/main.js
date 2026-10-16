@@ -24,8 +24,8 @@
     });
   }
 
-  // Contacto de Cavaci Travel (WhatsApp, correo, Instagram)
-  const cv = C.cavaci;
+  // Contacto de Kavaci Travel (WhatsApp, correo, Instagram)
+  const cv = C.kavaci;
   if (cv) {
     const destinos = {
       whatsapp: 'https://wa.me/' + cv.whatsapp,
@@ -33,7 +33,7 @@
       instagram: 'https://www.instagram.com/' + cv.instagram + '/'
     };
     document.querySelectorAll('[data-contacto]').forEach((a) => { a.href = destinos[a.dataset.contacto]; });
-    const datos = document.getElementById('cavaci-datos');
+    const datos = document.getElementById('kavaci-datos');
     if (datos) {
       datos.innerHTML = [cv.telefono, cv.correo, '@' + cv.instagram].map((t) => '<span>' + t + '</span>').join('');
     }
