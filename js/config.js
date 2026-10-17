@@ -18,7 +18,7 @@ window.CONFIG = {
     whatsapp: '5491167807979',              // sin + ni espacios (para wa.me)
     telefono: '+54 9 11 6780-7979',         // como se muestra
     correo: 'kavacitravelsrl@gmail.com',
-    instagram: 'cavaci_travel'              // sin @ — tal cual lo pasaron (con C); confirmar si es @kavaci_travel
+    instagram: 'kavaci_travel'              // sin @
   },
 
   alquilerAuto: {

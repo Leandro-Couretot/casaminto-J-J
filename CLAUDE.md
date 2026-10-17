@@ -73,7 +73,7 @@ Sin framework (preset `None`); comando de build `mkdir -p dist && cp -r index.ht
 Ya no quedan links con placeholder. Cargados todos: cómo llegar, RSVP, hospedaje, playlist, alquiler de auto, datos bancarios y Google Calendar.
 - [x] `links.comoLlegar` — Google Maps de La Posada Multiespacio (`maps.app.goo.gl/7nqbSM78iBb2CJMZ8`)
 - [x] `links.hospedaje` — cargado con la **ficha de Google** del Wyndham Nordelta Tigre (`share.google/...`). Si prefieren el WhatsApp o la web del hotel, cambiarlo
-- [x] Contacto de **Kavaci Travel** (con **K**; `kavaci` en `js/config.js`): WhatsApp +54 9 11 6780-7979, correo `kavacitravelsrl@gmail.com` e Instagram `@cavaci_travel` — **el usuario de Instagram quedó con C tal cual lo pasaron: confirmar si es `@kavaci_travel`**
+- [x] Contacto de **Kavaci Travel** (con **K**; `kavaci` en `js/config.js`): WhatsApp +54 9 11 6780-7979, correo `kavacitravelsrl@gmail.com` e Instagram `@kavaci_travel` (con K, confirmado por el usuario)
 - [x] `links.rsvp` — formulario de Google Forms (`forms.gle/KqwRxe1uDaNRY1QT9`). **Fecha límite de confirmación: 15 de noviembre**
 - [x] `links.calendar` — link “Agregar a Google Calendar” (`calendar.app.google/7iSG6mEJRQ4w4dVJ9`, página de reservas de Google Calendar pasada por el usuario)
 - [x] `links.playlist` — playlist **“Juli & Joa - 5D”** (`7LvauM5IuMQl19EpjGZUE7`, pasada por la organizadora; reemplaza a la de prueba `6fJRPqEHhDv3OePuHxS2Dt`). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
