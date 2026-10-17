@@ -8,7 +8,7 @@ window.CONFIG = {
     comoLlegar: 'https://maps.app.goo.gl/7nqbSM78iBb2CJMZ8',   // Google Maps de La Posada Multiespacio
     hospedaje:  'https://share.google/w9Xt6810jJyRvWxru',   // Wyndham Nordelta Tigre (ficha de Google)
     rsvp:       'https://forms.gle/KqwRxe1uDaNRY1QT9',   // formulario de confirmación de asistencia (Google Forms)
-    calendar:   'https://www.google.com',   // TODO: link "Agregar a Google Calendar"
+    calendar:   'https://calendar.app.google/7iSG6mEJRQ4w4dVJ9',   // "Agregar a Google Calendar"
     playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7',
     alquilerWeb:'https://www.waycarrental.com/'
   },
