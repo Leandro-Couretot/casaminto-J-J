@@ -24,9 +24,11 @@ js/sobre.js       Animación del sobre (sello → solapa → se funde con la inv
 js/musica.js      Música de fondo (YouTube IFrame API) y botón de silenciar
 img/              Portada, fotos (`fotos.jpg`: grilla 2×2), títulos caligráficos, textura de papel, monograma
 icons/            Iconos (SVG originales ICONO1-4 + PNG recortados del diseño)
-wrangler.jsonc    Configuración de publicación en Cloudflare (sitio estático, sin build)
-.assetsignore     Archivos que Cloudflare NO publica (CLAUDE.md, la config, .git…)
 ```
+
+Publicación: **Cloudflare Pages** (proyecto `juliyjoaco`, `https://juliyjoaco.pages.dev`), conectado a este repo, rama `main`.
+Sin framework (preset `None`); comando de build `mkdir -p dist && cp -r index.html css js img icons dist/`, carpeta de salida `dist`.
+**Si se agrega una carpeta o archivo nuevo en la raíz que deba publicarse, sumarlo a ese comando de build** (en el panel de Cloudflare → Settings → Builds).
 
 ## Diseño
 
@@ -112,9 +114,10 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [ ] Pasar la tipografía de Google Fonts a archivos locales si se quiere funcionar sin conexión.
 
 ### Publicación
-- [ ] **Mudanza a Cloudflare** (para no usar la URL de GitHub con el nombre personal): proyecto **`juliyjoaco`** en Cloudflare (Workers & Pages, “Workers Builds” conectado al repo; comando de build vacío, comando de deploy `npx wrangler deploy`, raíz `/`). La config está en `wrangler.jsonc` y `.assetsignore` deja afuera `CLAUDE.md` y los archivos de config (verificado con `wrangler deploy --dry-run`).
-  Cada push a `main` (y a la rama de trabajo) publica solo. **Falta confirmar la URL final**: con Workers queda `juliyjoaco.<subdominio-de-la-cuenta>.workers.dev` — revisar que ese subdominio no tenga el nombre personal (se puede cambiar, o usar Cloudflare Pages `juliyjoaco.pages.dev`, o un dominio propio). Poner la rama de producción en `main`.
-- [ ] Cuando la URL nueva esté lista: agregar etiquetas Open Graph (título, descripción, imagen) para la vista previa de WhatsApp, **desactivar GitHub Pages**, y pasar el repo a **privado** (alias y CBU hoy son públicos en el código del repo).
+- [x] **Mudanza a Cloudflare Pages** hecha: URL final **`https://juliyjoaco.pages.dev`** (sin el nombre personal). Cada push a `main` se publica solo. Se descartó Workers (`*.workers.dev`) porque el subdominio de la cuenta es de otro proyecto. Se borraron `wrangler.jsonc` y `.assetsignore` (Pages los ignoraba).
+  Ojo al compartir: el nombre es fácil de escribir mal (`juliyjoaco`, con **i**; alguien probó `julyyjoaco`). Mandarlo siempre como link clickeable. Un DNS recién consultado puede tardar en “aparecer” (caché negativa) en algunas redes.
+- [x] Etiquetas Open Graph / Twitter para la vista previa de WhatsApp en `index.html`; la imagen es `img/preview.jpg` (cuadrada 1000×1000, sale de `img/fotos.jpg`). WhatsApp guarda la vista previa en caché: si se cambia la imagen, cambiar también el `?v=` de `og:image`.
+- [ ] **Desactivar GitHub Pages** (el repo todavía lo publica en `leandro-couretot.github.io`) y pasar el repo a **privado** (alias y CBU hoy son públicos en el código del repo). Después de hacerlo, verificar que un push a `main` siga generando deploy en Cloudflare.
 - [x] Primera versión subida a la rama `main` (a pedido del usuario) para publicar con **GitHub Pages** (Settings → Pages → Deploy from a branch → `main` / `/ (root)`). El sitio queda **público**, con las fotos de la pareja.
 - [x] Segunda tanda (sobre, animaciones, música, pop ups, copas) subida a `main`.
 - [x] Tercera tanda (carta del sobre con la portada, tamaño de anillos/bola de espejos, cubiertos sin animación) subida a `main`.
@@ -124,4 +127,4 @@ Los links pendientes apuntan a `https://www.google.com` como placeholder. Ya car
 - [x] Ajustes finos: texto de la portada 5 px más arriba y fecha más chica (62) subidos a `main`.
 - [x] GitHub Pages activo: el sitio se abre en `leandro-couretot.github.io` (carpeta `casaminto-J-J`). Cada push a `main` se publica solo en 1-2 minutos.
 - [ ] Definir dominio propio (opcional) para compartir con los invitados.
-- [ ] Revisar metadatos para compartir por WhatsApp (`<title>`, descripción, imagen Open Graph).
+- [ ] Si llega una foto de mayor resolución, hacer una vista previa horizontal de 1200×630 (tarjeta grande en WhatsApp) en vez de la cuadrada.

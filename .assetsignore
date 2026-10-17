@@ -1,8 +1,0 @@
-# Archivos que NO se publican en el sitio (la carpeta publicada es la raíz del repo)
-.assetsignore
-wrangler.jsonc
-CLAUDE.md
-.git
-.github
-.claude
-node_modules
