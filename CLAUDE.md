@@ -76,7 +76,7 @@ Ya no quedan links con placeholder. Cargados todos: cómo llegar, RSVP, hospedaj
 - [x] Contacto de **Kavaci Travel** (con **K**; `kavaci` en `js/config.js`): WhatsApp +54 9 11 6780-7979, correo `kavacitravelsrl@gmail.com` e Instagram `@kavaci_travel` (con K, confirmado por el usuario)
 - [x] `links.rsvp` — formulario de Google Forms (`forms.gle/KqwRxe1uDaNRY1QT9`). **Fecha límite de confirmación: 15 de noviembre**
 - [x] `links.calendar` — link “Agregar a Google Calendar” (`calendar.app.google/7iSG6mEJRQ4w4dVJ9`, página de reservas de Google Calendar pasada por el usuario)
-- [x] `links.playlist` — playlist **“Juli & Joa - 5D”** (`7LvauM5IuMQl19EpjGZUE7`, pasada por la organizadora; reemplaza a la de prueba `6fJRPqEHhDv3OePuHxS2Dt`). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
+- [x] `links.playlist` — playlist **“Juli & Joa - 5D”** (`7LvauM5IuMQl19EpjGZUE7`, pasada por la organizadora; reemplaza a la de prueba `6fJRPqEHhDv3OePuHxS2Dt`). `links.playlist` ahora es el **link de invitación a colaborar** que pasó el usuario (trae parámetros `si`, `pi` y `pt`; el reproductor embebido usa solo el ID). Verificar que esté marcada como **colaborativa** en Spotify para que los invitados puedan sumar canciones
 - [x] `alquilerAuto` — **Waycar Rental**, código `JULIYJOACO`, 30 % de descuento, válido para reservas creadas entre el 28/11/2026 y el 14/12/2026 en sucursal de Buenos Aires (web: waycarrental.com)
 - [x] `banco.cuentas` — cuenta en pesos (`JULIYJOACO.2026`) y cuenta en USD (`JULIYJOA.2026`), cada una con su CBU
 

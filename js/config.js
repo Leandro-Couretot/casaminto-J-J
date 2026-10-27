@@ -9,7 +9,7 @@ window.CONFIG = {
     hospedaje:  'https://share.google/w9Xt6810jJyRvWxru',   // Wyndham Nordelta Tigre (ficha de Google)
     rsvp:       'https://forms.gle/KqwRxe1uDaNRY1QT9',   // formulario de confirmación de asistencia (Google Forms)
     calendar:   'https://calendar.app.google/7iSG6mEJRQ4w4dVJ9',   // "Agregar a Google Calendar"
-    playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7',
+    playlist:   'https://open.spotify.com/playlist/7LvauM5IuMQl19EpjGZUE7?si=sobf58oJTc2ksEpg3BqFqA&utm_source=copy-link&pi=E4hCHuDSRIWr1&pt=dd5b2062455679eb254d8d13bc79d1b3',   // link de invitación a colaborar (el reproductor usa solo el ID)
     alquilerWeb:'https://www.waycarrental.com/'
   },
 
